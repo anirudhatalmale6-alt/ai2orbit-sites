@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratings.co.uk - ratings.co.uk</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAADZklEQVR42rVWTW8cRRB9Vd0zvbPrMbObeAmxsYAEm4AUgbgg5Q8gIUAcEHd+Cn8iZ/4Ady6+RsoNISERuEQCKWDZay/enZ2e7ioOu2wW74fHwvSpVTNdr/vV16NerwcAABGpKpYWEQFY9+lKO690t3k1+We+7PyClzYrLgUQFKBFmHU/z/d8ybR8gIhmvgCAdL33lWB2kcSVhM4/KWAIDAQFrTqycs8NqWTCJOLwFXnYkzKAG0ehKQABk0gPivhBL1TxGlG2zQFU8Pa23HKiCxTdGMAU5N623HbKi8l0UwACpIzXO9JroW01KhrS1DQGQdB1ercjd7K4k2mQpmHgZtxoLei3ZCeNWzbebYsXbZx+DZZhCuD9XNNE1eDNHBFsGh2lTYU27VmqSqRVTfe3AlkF4WA7hmhVVXVtbc7tm4IcYySiNE1Ty23wwQ5/88PWucfDonKpZRYR/ecGdL0YTPHzPC+KwjkHYpXwTl4+H+qvZ/og9wmiKJjZGGOM2dBm7ErvSZIURTEajYbDoYookCp2nX/80UQEZxPa4rQMbBiqIKIkSUQkhLD8lBUvYOaiKAaDwcXFhaoawxHcz9DPkFJssXSd3OmgVmIiACLivU/T1Fq7/I7LACKSJIn3vqoqa2fvqwWvZlq4qJGiwKW619ZaZsXMzNNoZVl2NQAze+/runbOici0CwXBu0UkqwIoANb3ujEKEaCqIQTnXKfTGY/HjSgCUJblNIDTLn2Qx8/3vQoIYEAjfbwb3u+GcUBizTQXBoNB0xjMaKlrVVhjAsyne/WjfiCACEQg4MPb4Yv9iXWtPM9F5OTkpK7raTpdp5KhZS19Fz7br0aRTkqGghSnpRnW+GTP7ybjF6fDalISETPP5+u/ukCWZesqmQnnnr5+q/JCXx11jNKjbogR3z5rfXnUfq2DwzwcvUjaFsudae7qJcAyfVFxy+kbOR7/nJ7WvG31sF39OaLvfnNPB/bpsd3r0MBjGMjQWlWxCQAEIvrx3AgoYa0EO7b+fYTvj1t/BU4Nfjo3qhDQBtliN49JL2CajfhTz0+O2UD/qNiS0kwJXCHD7JWjGJgNSC/0y5CYaCLMpKKzpLqxmaygCzEGGhXm/xj6BnKmDkQGiv8OsFI5BzCuo1leit91qvSSnZrJ7EX733wBuGxdPsMmAAAAAElFTkSuQmCC">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#f5f5f5;--surface:#ffffff;--border:#e0e0e0;--text:#1a1a1a;--muted:#666666;
+--accent:#1a5276;--accent2:#154360;--green:#27ae60;--red:#e74c3c;--blue:#2980b9;
+--font:'Segoe UI',system-ui,-apple-system,sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
+a{color:var(--accent);text-decoration:none}
+
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:10px}
+.footer-links a{font-size:12px;color:var(--muted);transition:color 0.2s}
+.footer-links a:hover{color:var(--accent)}
+
+header{background:#ffffff;border-bottom:1px solid var(--border);padding:0 24px}
+.header-top{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#0a0e17;font-size:16px}
+.logo-text{font-size:18px;font-weight:600;letter-spacing:0.5px}
+.logo-text span{color:var(--accent)}
+.header-meta{display:flex;align-items:center;gap:20px;font-size:12px;color:var(--muted)}
+.header-meta .live{color:var(--green);display:flex;align-items:center;gap:5px}
+.live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+nav{max-width:1440px;margin:0 auto;display:flex;gap:24px;height:40px;align-items:center}
+nav a{color:var(--muted);font-size:13px;font-weight:500;padding:8px 0;border-bottom:2px solid transparent;transition:all 0.2s;cursor:pointer}
+nav a:hover,nav a.active{color:var(--text);border-bottom-color:var(--accent)}
+
+.container{max-width:1440px;margin:0 auto;padding:20px 24px}
+
+.summary-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.stat-value{font-size:22px;font-weight:600}
+.stat-value.up{color:var(--green)}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:2px}
+
+.controls{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.search-box{position:relative;flex:1;min-width:200px;max-width:340px}
+.search-box input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px 12px 8px 34px;color:var(--text);font-size:13px;outline:none;transition:border-color 0.2s}
+.search-box input:focus{border-color:var(--accent)}
+.search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.filter-btn{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 12px;color:var(--muted);font-size:12px;cursor:pointer;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{border-color:var(--accent);color:var(--text)}
+.sort-select{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:13px;cursor:pointer;outline:none}
+.results-count{margin-left:auto;font-size:12px;color:var(--muted)}
+
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead th{background:#f0f0f0;padding:9px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;z-index:1}
+thead th:hover{color:var(--text)}
+thead th.sorted-asc::after{content:" \25B2";font-size:9px}
+thead th.sorted-desc::after{content:" \25BC";font-size:9px}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer}
+tbody tr:hover{background:rgba(26,82,118,0.06)}
+tbody tr:last-child{border-bottom:none}
+td{padding:9px 12px;font-size:13px;white-space:nowrap}
+td:first-child{color:var(--muted);font-size:12px;width:36px}
+.ticker{font-weight:600;color:var(--accent);font-family:'Consolas','SF Mono',monospace;font-size:13px}
+.corp-name{color:var(--text);max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.grade{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;border-radius:50%;font-weight:700;font-size:13px}
+.grade-a{background:rgba(39,174,96,0.15);color:#1e8449}
+.grade-b{background:rgba(41,128,185,0.15);color:#21618c}
+.grade-c{background:rgba(243,156,18,0.15);color:#b7950b}
+.grade-d{background:rgba(231,76,60,0.15);color:#c0392b}
+.num-col{text-align:right;font-family:'Consolas','SF Mono',monospace;font-size:13px}
+.exchange-tag{background:rgba(41,128,185,0.12);color:var(--blue);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500}
+.type-tag{font-size:11px;color:var(--muted)}
+.auth-ok{color:var(--green);font-size:11px}
+.auth-pend{color:#facc15;font-size:11px}
+.auth-rev{color:var(--red);font-size:11px}
+
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px}
+.pagination button{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:6px 12px;color:var(--muted);font-size:12px;cursor:pointer;transition:all 0.15s}
+.pagination button:hover{border-color:var(--accent);color:var(--text)}
+.pagination button.active{background:var(--accent);color:#ffffff;border-color:var(--accent);font-weight:600}
+.pagination button:disabled{opacity:0.3;cursor:default}
+
+.scroll-table{max-height:calc(100vh - 340px);overflow-y:auto}
+.scroll-table::-webkit-scrollbar{width:6px}
+.scroll-table::-webkit-scrollbar-track{background:var(--surface)}
+.scroll-table::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* Detail Modal */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:100;justify-content:center;align-items:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;width:90%;max-width:640px;max-height:85vh;overflow-y:auto;padding:0}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border)}
+.modal-head h2{font-size:18px;font-weight:600}
+.modal-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px 8px;border-radius:4px}
+.modal-close:hover{color:var(--text);background:rgba(0,0,0,0.05)}
+.modal-body{padding:24px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.detail-item{padding:12px;background:var(--bg);border-radius:8px}
+.detail-item .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.detail-item .value{font-size:16px;font-weight:600}
+.detail-full{grid-column:1/-1}
+.detail-bar{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;margin-top:6px}
+.detail-bar-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.detail-desc{margin-top:16px;padding:16px;background:var(--bg);border-radius:8px;font-size:13px;line-height:1.6;color:var(--muted)}
+
+.ai50-section{max-width:1440px;margin:40px auto 0;padding:0 24px}
+.ai50-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.ai50-header h2{font-size:22px;font-weight:700}
+.ai50-header .ai50-sub{font-size:12px;color:var(--muted)}
+.ai50-split{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;height:620px;background:var(--surface)}
+.ai50-list{width:380px;min-width:320px;overflow-y:auto;border-right:1px solid var(--border);background:var(--bg)}
+.ai50-list::-webkit-scrollbar{width:5px}
+.ai50-list::-webkit-scrollbar-track{background:var(--bg)}
+.ai50-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.ai50-item{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s}
+.ai50-item:hover{background:rgba(26,82,118,0.05)}
+.ai50-item.active{background:var(--surface);border-left:3px solid var(--accent)}
+.ai50-item:last-child{border-bottom:none}
+.ai50-rank{font-size:20px;font-weight:700;color:var(--accent);min-width:32px;text-align:right;line-height:1.2}
+.ai50-item-info{flex:1;min-width:0}
+.ai50-name{font-size:14px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ai50-item-sub{font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.ai50-score{background:rgba(39,174,96,0.12);color:#1e8449;padding:1px 6px;border-radius:3px;font-weight:600;font-size:10px}
+.ai50-cat{background:rgba(41,128,185,0.1);color:var(--blue);padding:1px 6px;border-radius:3px;font-size:10px}
+.ai50-detail{flex:1;overflow-y:auto;padding:0}
+.ai50-detail::-webkit-scrollbar{width:5px}
+.ai50-detail::-webkit-scrollbar-track{background:var(--surface)}
+.ai50-detail::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.ai50-detail-empty{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:14px;text-align:center;padding:40px}
+.ai50-detail-head{padding:24px 28px;border-bottom:1px solid var(--border)}
+.ai50-detail-head .rank-badge{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:22px;font-weight:700;border-radius:10px;margin-bottom:12px}
+.ai50-detail-head h3{font-size:24px;font-weight:700;margin-bottom:4px}
+.ai50-detail-head .cat-line{font-size:13px;color:var(--muted)}
+.ai50-detail-body{padding:24px 28px}
+.ai50-detail-desc{font-size:14px;line-height:1.7;color:#444;margin-bottom:20px}
+.ai50-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.ai50-stat{background:var(--bg);border-radius:8px;padding:14px 16px}
+.ai50-stat .label{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:4px}
+.ai50-stat .value{font-size:18px;font-weight:600}
+.ai50-score-bar{margin-bottom:20px}
+.ai50-score-bar .bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
+.ai50-score-bar .bar-track{height:10px;background:var(--bg);border-radius:5px;overflow:hidden}
+.ai50-score-bar .bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--accent),var(--green));transition:width 0.6s ease}
+.ai50-peers{margin-top:20px}
+.ai50-peers h4{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:10px}
+.ai50-peer{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg);border-radius:6px;margin-bottom:6px;font-size:13px}
+.ai50-peer .peer-rank{font-weight:700;color:var(--accent);min-width:24px}
+.ai50-peer .peer-name{flex:1}
+.ai50-peer .peer-score{font-weight:600;font-size:12px;color:var(--muted)}
+@media(max-width:768px){
+  .ai50-split{flex-direction:column;height:auto}
+  .ai50-list{width:100%;max-height:300px;border-right:none;border-bottom:1px solid var(--border)}
+  .ai50-detail{min-height:400px}
+}
+
+footer{margin-top:40px;padding:20px 24px;border-top:1px solid var(--border);text-align:center;font-size:11px;color:var(--muted)}
+footer span{color:var(--accent)}
+
+@media(max-width:768px){
+  .summary-bar{grid-template-columns:repeat(2,1fr)}
+  .controls{flex-direction:column;align-items:stretch}
+  .search-box{max-width:100%}
+  .results-count{margin-left:0}
+  td,th{padding:7px 8px;font-size:11px}
+  .header-meta{display:none}
+  .detail-grid{grid-template-columns:1fr}
+  .modal{width:95%}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="header-top">
+  <div class="logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAADZklEQVR42rVWTW8cRRB9Vd0zvbPrMbObeAmxsYAEm4AUgbgg5Q8gIUAcEHd+Cn8iZ/4Ady6+RsoNISERuEQCKWDZay/enZ2e7ioOu2wW74fHwvSpVTNdr/vV16NerwcAABGpKpYWEQFY9+lKO690t3k1+We+7PyClzYrLgUQFKBFmHU/z/d8ybR8gIhmvgCAdL33lWB2kcSVhM4/KWAIDAQFrTqycs8NqWTCJOLwFXnYkzKAG0ehKQABk0gPivhBL1TxGlG2zQFU8Pa23HKiCxTdGMAU5N623HbKi8l0UwACpIzXO9JroW01KhrS1DQGQdB1ercjd7K4k2mQpmHgZtxoLei3ZCeNWzbebYsXbZx+DZZhCuD9XNNE1eDNHBFsGh2lTYU27VmqSqRVTfe3AlkF4WA7hmhVVXVtbc7tm4IcYySiNE1Ty23wwQ5/88PWucfDonKpZRYR/ecGdL0YTPHzPC+KwjkHYpXwTl4+H+qvZ/og9wmiKJjZGGOM2dBm7ErvSZIURTEajYbDoYookCp2nX/80UQEZxPa4rQMbBiqIKIkSUQkhLD8lBUvYOaiKAaDwcXFhaoawxHcz9DPkFJssXSd3OmgVmIiACLivU/T1Fq7/I7LACKSJIn3vqoqa2fvqwWvZlq4qJGiwKW619ZaZsXMzNNoZVl2NQAze+/runbOici0CwXBu0UkqwIoANb3ujEKEaCqIQTnXKfTGY/HjSgCUJblNIDTLn2Qx8/3vQoIYEAjfbwb3u+GcUBizTQXBoNB0xjMaKlrVVhjAsyne/WjfiCACEQg4MPb4Yv9iXWtPM9F5OTkpK7raTpdp5KhZS19Fz7br0aRTkqGghSnpRnW+GTP7ybjF6fDalISETPP5+u/ukCWZesqmQnnnr5+q/JCXx11jNKjbogR3z5rfXnUfq2DwzwcvUjaFsudae7qJcAyfVFxy+kbOR7/nJ7WvG31sF39OaLvfnNPB/bpsd3r0MBjGMjQWlWxCQAEIvrx3AgoYa0EO7b+fYTvj1t/BU4Nfjo3qhDQBtliN49JL2CajfhTz0+O2UD/qNiS0kwJXCHD7JWjGJgNSC/0y5CYaCLMpKKzpLqxmaygCzEGGhXm/xj6BnKmDkQGiv8OsFI5BzCuo1leit91qvSSnZrJ7EX733wBuGxdPsMmAAAAAElFTkSuQmCC" alt="Ratings.co.uk" style="width:28px;height:28px;border-radius:4px">
+    <div class="logo-text"><span>Ratings</span>.co.uk</div>
+  </div>
+  <div class="header-meta">
+    <div class="live"><span class="live-dot"></span> Live Market Data</div>
+    <div id="clock"></div>
+    <div>ratings.co.uk</div>
+    <a href="#" id="downloadApp" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;transition:background 0.2s;text-decoration:none" onmouseover="this.style.background='var(--accent2)'" onmouseout="this.style.background='var(--accent)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download App
+    </a>
+  </div>
+</div>
+<nav>
+  <a class="active" onclick="showView('listings')">Listings</a>
+  <a onclick="showView('listings')">Indices</a>
+  <a onclick="showView('listings')">Analysis</a>
+  <a onclick="showView('listings')">Sectors</a>
+  <a onclick="showView('listings')">About</a>
+</nav>
+</header>
+
+<div class="container">
+  <div class="summary-bar">
+    <div class="stat-card">
+      <div class="stat-label">Total Listings</div>
+      <div class="stat-value" id="totalListings">0</div>
+      <div class="stat-sub">Authorized entities</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg Score</div>
+      <div class="stat-value up" id="avgRating">0.00</div>
+      <div class="stat-sub">Weighted composite</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Market Volume</div>
+      <div class="stat-value" id="totalVolume">0</div>
+      <div class="stat-sub">Parts traded</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Exchanges</div>
+      <div class="stat-value" id="totalExchanges">0</div>
+      <div class="stat-sub">Active markets</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Authorized</div>
+      <div class="stat-value up" id="totalAuth">0</div>
+      <div class="stat-sub">FMA compliant</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search ticker, company, exchange...">
+    </div>
+    <button class="filter-btn active" data-exchange="ALL">All</button>
+    <button class="filter-btn" data-exchange="NYSE">NYSE</button>
+    <button class="filter-btn" data-exchange="NASDAQ">NASDAQ</button>
+    <button class="filter-btn" data-exchange="LSE">LSE</button>
+    <button class="filter-btn" data-exchange="OMXH">OMXH</button>
+    <button class="filter-btn" data-exchange="XETRA">XETRA</button>
+    <button class="filter-btn" data-exchange="Euronext">CAC</button>
+    <button class="filter-btn" data-exchange="HKEX">HKEX</button>
+    <button class="filter-btn" data-exchange="TSE">TSE</button>
+    <button class="filter-btn" data-exchange="Crypto">Crypto</button>
+    <select class="sort-select" id="sortSelect">
+      <option value="num-asc">Sort: # Asc</option>
+      <option value="ticker-asc">Ticker A-Z</option>
+      <option value="grade-asc">Grade A-D</option>
+      <option value="rating1-desc">Math Score High</option>
+      <option value="rating2-asc">S&amp;P Low</option>
+      <option value="price-desc">Price High-Low</option>
+      <option value="price-asc">Price Low-High</option>
+    </select>
+    <div class="results-count" id="resultsCount"></div>
+  </div>
+
+  <div class="table-wrap">
+    <div class="scroll-table">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="num">#</th>
+            <th data-sort="ticker">Ticker</th>
+            <th data-sort="name">Corporation</th>
+            <th data-sort="type">Type</th>
+            <th data-sort="grade">Score</th>
+            <th data-sort="rating1">Math</th>
+            <th data-sort="rating2">S&amp;P</th>
+            <th data-sort="parts">Parts</th>
+            <th data-sort="price">Price</th>
+            <th data-sort="exchange">Exchange</th>
+            <th data-sort="auth">Status</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pagination" id="pagination"></div>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="ai50-section" id="ai50section">
+  <div class="ai50-header">
+    <div>
+      <h2>AI 50 &mdash; Top Artificial Intelligence Companies</h2>
+      <p style="font-size:13px;color:var(--muted);margin-top:4px">Ranked by innovation score, market impact, and technology readiness. Updated July 2026.</p>
+    </div>
+    <div class="ai50-sub">50 companies &bull; 8 categories</div>
+  </div>
+  <div class="ai50-split">
+    <div class="ai50-list" id="ai50List"></div>
+    <div class="ai50-detail" id="ai50Detail">
+      <div class="ai50-detail-empty">Click a company to view details</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="terms.html">Terms of Service</a>
+    <a href="eula.html">EULA</a>
+    <a href="nis2.html">NIS2</a>
+    <a href="gdpr.html">GDPR</a>
+  </div>
+  &copy; 2026 <span>Ratings.co.uk</span> &mdash; ratings.co.uk &mdash; Market data for informational purposes only. AI2ORBIT Co.
+</footer>
+
+<script>
+const TYPES=["Equity","Investment Bank","Insurance","Technology","Energy","Pharmaceutical","Consumer","Industrial","Financial Services","Telecommunications","Mining","Automotive","Retail","Conglomerate","REIT"];
+const AUTH=["Authorized","Authorized","Authorized","Authorized","Authorized","Authorized","Authorized","Authorized","Pending Review","Authorized","Authorized","Authorized"];
+function rGrade(r){return r>=4.5?"A":r>=4.0?"B":r>=3.5?"C":"D"}
+function rClass(g){return"grade-"+g.toLowerCase()}
+
+const DATA=[
+// NYSE
+{t:"A",n:"Agilent Technologies",r1:4.2,r2:0.022,p:147514659,pr:97.92,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AA",n:"Alcoa Corp",r1:3.4,r2:0.064,p:348349743,pr:13.48,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AAN",n:"Aaron's Inc",r1:4.6,r2:0.025,p:220960909,pr:52.19,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AAP",n:"Advance Auto Parts Inc",r1:3.1,r2:0.033,p:262677644,pr:150.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AAT",n:"American Assets Trust",r1:3.0,r2:0.032,p:334942218,pr:27.25,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AB",n:"Alliancebernstein Holding LP",r1:4.0,r2:0.033,p:304632841,pr:28.15,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABB",n:"Abb Ltd",r1:4.5,r2:0.02,p:412909625,pr:25.71,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABBV",n:"Abbvie Inc",r1:4.3,r2:0.04,p:87739749,pr:95.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABC",n:"Amerisourcebergen Corp",r1:4.7,r2:0.04,p:56372921,pr:103.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABEV",n:"Ambev S.A.",r1:3.2,r2:0.071,p:311863015,pr:2.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABG",n:"Asbury Automotive Group Inc",r1:4.5,r2:0.064,p:278114045,pr:100.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABM",n:"ABM Industries Incorporated",r1:4.8,r2:0.043,p:286020315,pr:36.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABR",n:"Arbor Realty Trust",r1:4.5,r2:0.057,p:440853450,pr:10.75,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ABT",n:"Abbott Laboratories",r1:4.0,r2:0.062,p:32912191,pr:100.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AC",n:"Associated Capital Group Inc",r1:3.4,r2:0.037,p:49895988,pr:40.26,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACA",n:"Arcosa Inc",r1:3.4,r2:0.026,p:148986801,pr:42.55,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACB",n:"Aurora Cannabis Inc",r1:4.1,r2:0.042,p:195090483,pr:10.63,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACC",n:"American Campus Communities Inc",r1:3.4,r2:0.036,p:478327293,pr:34.93,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACCO",n:"Acco Brands Corp",r1:4.2,r2:0.057,p:95569324,pr:6.73,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACE.W",n:"Accel Entmt Inc [Acel/W]",r1:4.3,r2:0.03,p:199727720,pr:2.39,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACEL",n:"Accel Entertainment Inc.",r1:4.8,r2:0.058,p:288474871,pr:7.66,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACH",n:"Aluminum Corp of China Ltd",r1:4.2,r2:0.071,p:397999955,pr:6.88,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACI",n:"Albertsons Companies Inc Cl A",r1:3.4,r2:0.022,p:167726524,pr:14.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACM",n:"Aecom Technology Corp",r1:3.5,r2:0.033,p:481454857,pr:38.8,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACN",n:"Accenture Plc",r1:4.6,r2:0.039,p:337719332,pr:226.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACP",n:"Avenue Income Credit Strategies",r1:3.7,r2:0.075,p:239425926,pr:9.95,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACRE",n:"Ares Commercial Real Estate Cor",r1:3.5,r2:0.035,p:290684067,pr:8.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACV",n:"Allianzgi Diversified Income &",r1:3.5,r2:0.055,p:458911441,pr:25.77,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADC",n:"Agree Realty Corp",r1:3.7,r2:0.033,p:508768803,pr:67.55,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADCT",n:"Adc Therapeutics Sa",r1:3.9,r2:0.025,p:33558187,pr:48.31,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADM",n:"Archer Daniels Midland",r1:3.2,r2:0.058,p:406039682,pr:42.69,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADNT",n:"Adient Plc",r1:3.8,r2:0.024,p:200809643,pr:17.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADS",n:"Alliance Data Systems Corp",r1:4.8,r2:0.052,p:495539188,pr:45.23,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADSW",n:"Advanced Disposal Services Inc",r1:4.5,r2:0.021,p:370360909,pr:30.19,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADT",n:"ADT Inc",r1:4.2,r2:0.052,p:143412594,pr:13.15,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADX",n:"Adams Diversified Equity Fund",r1:4.2,r2:0.027,p:227382625,pr:15.84,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEB",n:"Aegon N.V. Perp Cap Secs Floating Rate",r1:3.8,r2:0.077,p:447926470,pr:23.95,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEE",n:"Ameren Corp",r1:3.5,r2:0.05,p:99325940,pr:79.66,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEFC",n:"Aegon Funding Company Llc 5.10%",r1:4.6,r2:0.072,p:159222395,pr:25.16,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEG",n:"Aegon N.V.",r1:4.2,r2:0.057,p:86419634,pr:3.06,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEL",n:"American Equity Investment Life",r1:4.4,r2:0.052,p:399313239,pr:25.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEM",n:"Agnico-Eagle Mines Ltd",r1:4.0,r2:0.02,p:172078028,pr:78.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEO",n:"American Eagle Outfitters",r1:3.0,r2:0.076,p:449360938,pr:10.54,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AEP",n:"American Electric Power Company",r1:4.5,r2:0.038,p:38962583,pr:85.8,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AER",n:"Aercap Holdings N.V.",r1:4.6,r2:0.077,p:52826726,pr:29.09,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AES",n:"The Aes Corp",r1:3.9,r2:0.024,p:390301082,pr:15.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFB",n:"Alliance National Municipal",r1:4.4,r2:0.028,p:247641189,pr:13.96,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFC",n:"Allied Capital Corp",r1:4.0,r2:0.036,p:446216520,pr:26.08,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFG",n:"American Financial Group",r1:3.8,r2:0.033,p:279648044,pr:61.71,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFGB",n:"American Financial Group Inc 5.875%",r1:4.3,r2:0.032,p:165858145,pr:27.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFGC",n:"American Financial Group Inc 5.125%",r1:4.8,r2:0.059,p:229050041,pr:26.63,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFGD",n:"American Financial Group Inc 5.625%",r1:3.9,r2:0.027,p:122348668,pr:26.56,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFGH",n:"American Financial Group Inc",r1:3.6,r2:0.055,p:125057366,pr:25.43,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFI",n:"Armstrong Flooring Inc",r1:3.4,r2:0.024,p:325551478,pr:3.07,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFL",n:"Aflac Incorporated",r1:3.4,r2:0.074,p:439817700,pr:35.49,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AFT",n:"Apollo Senior Floating Rate Fund Inc",r1:3.1,r2:0.034,p:344488889,pr:12.66,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AG",n:"First Majestic Silver",r1:3.4,r2:0.028,p:477757120,pr:13.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGCO",n:"Agco Corp",r1:4.0,r2:0.048,p:402309712,pr:67.91,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGD",n:"Alpine Global Dynamic Dividend Fund",r1:4.5,r2:0.031,p:58465407,pr:9.14,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGI",n:"Alamos Gold Inc",r1:3.8,r2:0.045,p:243512334,pr:10.33,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGM",n:"Federal Agricultural Mortgage Corp",r1:4.3,r2:0.06,p:502082605,pr:59.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGM.A",n:"Federal Agricultural Mortgage Corp",r1:3.2,r2:0.044,p:179651302,pr:56.58,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGO",n:"Assured Guaranty Ltd",r1:4.6,r2:0.035,p:105104454,pr:22.22,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGR",n:"Avangrid Inc",r1:3.8,r2:0.045,p:149272572,pr:48.93,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGRO",n:"Adecoagro S.A.",r1:3.4,r2:0.075,p:231565372,pr:4.43,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGS",n:"Playags Inc",r1:4.6,r2:0.053,p:35294164,pr:3.48,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AGX",n:"Argan Inc",r1:4.8,r2:0.07,p:494498128,pr:43.38,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AHC",n:"A.H. Belo Corp",r1:4.7,r2:0.071,p:93155555,pr:1.56,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AHH",n:"Armada Hoffler Properties Inc",r1:3.9,r2:0.033,p:210520146,pr:9.93,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AHT",n:"Ashford Hospitality Trust Inc",r1:3.1,r2:0.043,p:502654421,pr:3.74,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AI",n:"Arlington Asset Investment Corp",r1:3.5,r2:0.067,p:237504183,pr:2.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIC",n:"Arlington Asset Investment Cor",r1:3.8,r2:0.077,p:507711344,pr:23.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIF",n:"Apollo Tactical Income Fund Inc",r1:4.0,r2:0.063,p:87398412,pr:12.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIG",n:"American International Group",r1:3.5,r2:0.078,p:299590145,pr:30.65,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIG.W",n:"American Intl Group Inc WT [Aig/W]",r1:4.0,r2:0.065,p:38582636,pr:0.92,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIN",n:"Albany International Corp",r1:4.1,r2:0.05,p:436359946,pr:49.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIO",n:"Allianzgi Artificial Intelligence &",r1:3.3,r2:0.078,p:50055732,pr:21.38,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIR",n:"AAR Corp",r1:3.3,r2:0.056,p:347606276,pr:17.52,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIT",n:"Applied Industrial Technologies",r1:3.4,r2:0.027,p:455143657,pr:64.62,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIV",n:"Apartment Investment and Management",r1:3.4,r2:0.056,p:319690755,pr:36.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIW",n:"Arlington Asset Investment Cor",r1:3.8,r2:0.055,p:271391357,pr:23.55,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIZ",n:"Assurant Inc",r1:4.7,r2:0.032,p:368095900,pr:107.8,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AIZP",n:"Assurant Inc 6.50% Series D Mandatory",r1:3.4,r2:0.044,p:345845111,pr:108.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AJG",n:"Arthur J. Gallagher & Company",r1:3.5,r2:0.039,p:385932246,pr:105.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AJRD",n:"Aerojet Rocketdyne Holdings",r1:3.1,r2:0.047,p:509227220,pr:43.16,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AJX",n:"Great Ajax Corp",r1:4.8,r2:0.024,p:116577156,pr:8.69,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AJXA",n:"Great Ajax Corp 7.25% Convertible Senior",r1:3.5,r2:0.076,p:450432086,pr:24.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AKO.A",n:"Embotell Andina Sa Cl A",r1:4.6,r2:0.042,p:88873416,pr:12.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AKO.B",n:"Embotell Andna Sa Cl B",r1:4.5,r2:0.062,p:315838882,pr:14.58,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AKR",n:"Acadia Realty Trust",r1:4.8,r2:0.059,p:13911553,pr:12.09,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AL",n:"Air Lease Corp Cl A",r1:4.5,r2:0.038,p:341694357,pr:27.66,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALB",n:"Albemarle Corp",r1:4.7,r2:0.028,p:67714335,pr:83.54,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALC",n:"Alcon Inc",r1:3.2,r2:0.053,p:146174106,pr:60.73,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALE",n:"Allete Inc",r1:4.1,r2:0.063,p:111798656,pr:60.17,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALEX",n:"Alexander and Baldwin Inc",r1:4.1,r2:0.036,p:254265926,pr:12.06,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALG",n:"Alamo Group",r1:4.6,r2:0.071,p:56149233,pr:107.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALK",n:"Alaska Air Group",r1:3.8,r2:0.037,p:11772844,pr:34.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALL",n:"Allstate Corp",r1:4.4,r2:0.058,p:140977631,pr:96.67,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALLE",n:"Allegion Plc",r1:4.3,r2:0.053,p:223843459,pr:98.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALLY",n:"Ally Financial",r1:3.0,r2:0.025,p:451553196,pr:20.78,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALSN",n:"Allison Transmission Holdings",r1:4.6,r2:0.053,p:427297509,pr:38.16,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALT.W",n:"Alta Equipment Group Inc [Altg/W]",r1:4.0,r2:0.029,p:73722759,pr:1.36,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALTG",n:"Alta Equipment Group Inc.",r1:3.6,r2:0.074,p:408061152,pr:7.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALU.U",n:"Alussa Energy Acquisition Corp [Alus.U]",r1:4.5,r2:0.074,p:115038269,pr:10.37,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALU.W",n:"Alussa Energy Acquisition Corp [Alus/W]",r1:3.4,r2:0.026,p:400058120,pr:0.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALUS",n:"Alussa Energy Acquisition Corp Cl A",r1:4.6,r2:0.044,p:320330755,pr:10.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALV",n:"Autoliv Inc",r1:3.3,r2:0.076,p:442302848,pr:67.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALX",n:"Alexander's Inc",r1:4.8,r2:0.069,p:450708102,pr:254.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AM",n:"Antero Midstream Corp",r1:3.0,r2:0.064,p:176092733,pr:6.13,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMB.W",n:"Ambac Financial Group",r1:4.7,r2:0.068,p:442032014,pr:5.35,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMBC",n:"Ambac Financial Group",r1:4.5,r2:0.036,p:403687254,pr:13.19,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMC",n:"Amc Entertainment Holdings Inc",r1:3.2,r2:0.072,p:439296625,pr:4.19,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMCR",n:"Amcor Plc",r1:3.4,r2:0.069,p:240151617,pr:10.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AME",n:"Amtek Inc",r1:3.5,r2:0.068,p:123797743,pr:94.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMG",n:"Affiliated Managers Group",r1:3.0,r2:0.032,p:174130975,pr:68.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMH",n:"American Homes 4 Rent",r1:4.6,r2:0.078,p:149562496,pr:29.08,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMK",n:"Assetmark Financial Holdings Inc",r1:4.2,r2:0.044,p:500574843,pr:27.87,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMN",n:"Amn Healthcare Services Inc",r1:4.0,r2:0.076,p:67670875,pr:54.37,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMOV",n:"America Movil A ADR",r1:4.7,r2:0.031,p:491267157,pr:12.49,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMP",n:"Ameriprise Financial Services",r1:3.5,r2:0.027,p:227281879,pr:153.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMPY",n:"Amplify Energy Corp",r1:4.3,r2:0.039,p:313104426,pr:1.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMRC",n:"Ameresco Inc",r1:3.9,r2:0.043,p:298294021,pr:30.2,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMRX",n:"Amneal Pharmaceuticals Inc",r1:3.5,r2:0.063,p:10845639,pr:4.81,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMT",n:"American Tower Corp",r1:4.7,r2:0.052,p:369714999,pr:257.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMX",n:"America Movil S.A.B. DE C.V.",r1:4.3,r2:0.06,p:192110735,pr:12.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AN",n:"Autonation Inc",r1:3.1,r2:0.06,p:175100018,pr:52.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ANET",n:"Arista Networks Inc",r1:3.6,r2:0.071,p:369877131,pr:264.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ANF",n:"Abercrombie & Fitch Company",r1:3.5,r2:0.039,p:214196454,pr:9.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ANH",n:"Anworth Mortgage Asset Corp",r1:3.7,r2:0.038,p:73643899,pr:1.73,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ANTM",n:"Anthem Inc",r1:3.8,r2:0.076,p:348658972,pr:271.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AOD",n:"Alpine Total Dynamic Dividend",r1:4.6,r2:0.057,p:160474937,pr:7.94,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AON",n:"AON Plc",r1:4.0,r2:0.02,p:153456858,pr:200.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AOS",n:"Smith [A.O.] Corp",r1:3.8,r2:0.055,p:337352811,pr:48.18,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AP",n:"Ampco-Pittsburgh Corp",r1:3.8,r2:0.047,p:116850700,pr:2.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APAM",n:"Artisan Partners Asset Mgmt",r1:3.9,r2:0.074,p:408012380,pr:37.47,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APD",n:"Air Products and Chemicals",r1:3.3,r2:0.025,p:267726004,pr:279.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APG",n:"Api Group Corp",r1:4.1,r2:0.04,p:419211732,pr:14.15,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APH",n:"Amphenol Corp",r1:4.4,r2:0.06,p:122320332,pr:107.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APLE",n:"Apple Hospitality REIT Inc",r1:3.4,r2:0.021,p:132421272,pr:8.97,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APO",n:"Apollo Global Management Llc C",r1:3.9,r2:0.071,p:46414114,pr:49.49,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APRN",n:"Blue Apron Holdings Inc",r1:3.7,r2:0.058,p:107217618,pr:12.04,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APTS",n:"Preferred Apartment Communities",r1:4.3,r2:0.05,p:131992219,pr:7.07,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APTV",n:"Aptiv Plc",r1:4.2,r2:0.02,p:385482238,pr:80.94,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AQN",n:"Algonquin Pwr & Util",r1:4.4,r2:0.026,p:222573096,pr:13.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AQNA",n:"Algonquin Power & Utilities Corp",r1:3.3,r2:0.077,p:268978875,pr:27.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AQNB",n:"Algonquin Power & Utilities Corp 6.20%",r1:3.1,r2:0.035,p:434168173,pr:26.98,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AQUA",n:"Evoqua Water Technologies Corp",r1:3.8,r2:0.068,p:343788866,pr:21.73,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AR",n:"Antero Resources Corp",r1:4.8,r2:0.056,p:485019804,pr:3.37,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARA",n:"American Renal Associates",r1:4.6,r2:0.057,p:369636980,pr:6.2,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARC",n:"American Reprographics Company",r1:3.9,r2:0.07,p:283935975,pr:1.05,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARCH",n:"Arch Coal Inc",r1:4.6,r2:0.065,p:247337218,pr:31.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARCO",n:"Arcos Dorados Holdings Inc",r1:3.5,r2:0.035,p:328830718,pr:4.91,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARD",n:"Ardagh Group S.A.",r1:4.4,r2:0.051,p:323374218,pr:14.39,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARDC",n:"Ares Dynamic Credit Allocation",r1:3.5,r2:0.025,p:152864075,pr:12.39,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARE",n:"Alexandria Real Estate Equities",r1:3.5,r2:0.039,p:280076111,pr:176.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARES",n:"Ares Management LP",r1:3.2,r2:0.034,p:356974906,pr:40.32,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARGD",n:"Argo Grp Itl Snr NTS",r1:4.3,r2:0.024,p:213799684,pr:25.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARGO",n:"Argo Group Intl Hlds",r1:4.0,r2:0.045,p:113417194,pr:34.15,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARI",n:"Apollo Commercial Real Estate",r1:3.8,r2:0.074,p:302039707,pr:9.17,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARL",n:"American Realty Investors",r1:4.3,r2:0.071,p:392797288,pr:9.84,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARLO",n:"Arlo Technologies Inc",r1:3.7,r2:0.02,p:185879401,pr:4.94,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARMK",n:"Aramark Holdings Corp",r1:4.4,r2:0.071,p:486715169,pr:20.67,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARNC",n:"Arconic Corp",r1:3.8,r2:0.065,p:283066154,pr:16.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AROC",n:"Archrock Inc",r1:4.1,r2:0.033,p:119710817,pr:6.93,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARR",n:"Armour Residential R",r1:3.8,r2:0.022,p:178064771,pr:9.29,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ARW",n:"Arrow Electronics",r1:4.2,r2:0.044,p:92522365,pr:73.21,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASA",n:"ASA Gold and Precious Metals",r1:3.8,r2:0.028,p:321128480,pr:24.32,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASB",n:"Associated Banc-Corp",r1:3.0,r2:0.044,p:292195991,pr:12.99,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASC",n:"Ardmore Shipping Corp",r1:3.0,r2:0.059,p:77849743,pr:4.01,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASG",n:"Liberty All-Star Growth Fund",r1:3.8,r2:0.023,p:199551932,pr:7.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASGI",n:"Aberdeen Standard Global Infrastructure",r1:3.4,r2:0.04,p:390614853,pr:19.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASGN",n:"On Assignment",r1:3.7,r2:0.065,p:425962142,pr:68.14,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASH",n:"Ashland Global Holdings Inc",r1:3.5,r2:0.025,p:19691643,pr:77.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASIX",n:"Advansix Inc",r1:4.0,r2:0.08,p:184980171,pr:12.35,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASPN",n:"Aspen Aerogels Inc",r1:4.2,r2:0.067,p:335877327,pr:6.46,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASR",n:"Grupo Aeroportuario Del Sureste",r1:4.4,r2:0.077,p:109680341,pr:97.53,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASX",n:"Ase Industrial Holding Co. Ltd",r1:3.0,r2:0.029,p:73110487,pr:4.74,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AT",n:"Atlantic Power Corp",r1:4.2,r2:0.054,p:118982270,pr:1.97,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATCO",n:"Atlas Corp.",r1:4.3,r2:0.066,p:93894571,pr:7.02,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATEN",n:"A10 Networks Inc",r1:4.1,r2:0.065,p:67266435,pr:8.28,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATGE",n:"Adtalem Global Education Inc",r1:4.5,r2:0.078,p:64049374,pr:34.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATH",n:"Athene Holding Ltd",r1:3.0,r2:0.039,p:348673643,pr:32.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATHM",n:"Autohome Inc",r1:4.7,r2:0.044,p:367507352,pr:89.55,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATI",n:"Allegheny Technologies Inc",r1:3.1,r2:0.061,p:323621197,pr:8.76,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATKR",n:"Atkore International Group",r1:3.2,r2:0.066,p:435146619,pr:29.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATO",n:"Atmos Energy Corp",r1:4.1,r2:0.027,p:501922175,pr:105.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATR",n:"Aptargroup",r1:4.4,r2:0.041,p:224189006,pr:118.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATTO",n:"Atento S.A.",r1:3.7,r2:0.05,p:180615587,pr:8.65,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATUS",n:"Altice USA Inc Cl A",r1:4.5,r2:0.069,p:62769435,pr:27.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATV",n:"Acorn International",r1:4.7,r2:0.058,p:424353655,pr:16.8,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AU",n:"Anglogold Ashanti Ltd",r1:4.3,r2:0.046,p:376897652,pr:31.31,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AUY",n:"Yamana Gold",r1:4.7,r2:0.036,p:414099609,pr:6.42,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVA",n:"Avista Corp",r1:4.0,r2:0.049,p:227787246,pr:36.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVAL",n:"Grupo Aval Acciones Y Valores S",r1:4.3,r2:0.036,p:435856580,pr:4.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVB",n:"Avalonbay Communities",r1:4.5,r2:0.025,p:450815592,pr:150.2,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVD",n:"American Vanguard Corp",r1:3.4,r2:0.048,p:315165852,pr:13.68,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVK",n:"Advent Claymore Convertible Securities",r1:3.7,r2:0.022,p:435476418,pr:14.02,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVLR",n:"Avalara Inc",r1:3.3,r2:0.033,p:408916178,pr:138.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVNS",n:"Avanos Medical Inc",r1:3.6,r2:0.073,p:360591875,pr:33.42,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVNT",n:"Avient Corp.",r1:3.5,r2:0.021,p:484031288,pr:24.39,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVTR",n:"Avantor Inc",r1:3.2,r2:0.063,p:254288923,pr:22.34,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVY",n:"Avery Dennison Corp",r1:4.4,r2:0.061,p:332951449,pr:112.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVYA",n:"Avaya Holdings Corp",r1:3.9,r2:0.068,p:56526675,pr:13.74,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AWF",n:"Alliancebernstein Global High Income",r1:3.4,r2:0.062,p:163103015,pr:10.69,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AWI",n:"Armstrong World Industries Inc",r1:4.0,r2:0.048,p:275460965,pr:71.44,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AWK",n:"American Water Works",r1:3.8,r2:0.065,p:175395648,pr:146.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AWP",n:"Alpine Global Premier Propertie",r1:4.3,r2:0.036,p:135701838,pr:4.82,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AWR",n:"American States Water Company",r1:3.2,r2:0.032,p:69777370,pr:75.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AX",n:"Axos Financial Inc",r1:4.0,r2:0.066,p:102574921,pr:22.11,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AXL",n:"American Axle & Manufacturing",r1:3.4,r2:0.049,p:372292500,pr:6.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AXO",n:"Axos Financial Inc",r1:4.8,r2:0.051,p:151499351,pr:25.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AXP",n:"American Express Company",r1:3.2,r2:0.032,p:123741581,pr:93.04,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AXR",n:"Amrep Corp",r1:3.3,r2:0.021,p:277067544,pr:4.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AXS",n:"Axis Capital Holdings",r1:3.5,r2:0.078,p:286679483,pr:40.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AXTA",n:"Axalta Coating Systems Ltd",r1:4.3,r2:0.028,p:444230598,pr:22.47,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AYI",n:"Acuity Brands Inc",r1:3.9,r2:0.072,p:297032109,pr:99.77,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AYX",n:"Alteryx Inc",r1:3.8,r2:0.046,p:102181835,pr:179.2,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AZEK",n:"The Azek Company Inc Cl A",r1:3.1,r2:0.076,p:248864593,pr:33.07,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AZN",n:"Astrazeneca Plc",r1:4.5,r2:0.044,p:47041085,pr:56.09,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AZO",n:"Autozone",r1:4.1,r2:0.023,p:84598792,pr:1200.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AZRE",n:"Azure Power Global Ltd",r1:4.0,r2:0.038,p:506959061,pr:21.56,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AZUL",n:"Azul S.A. ADR",r1:3.2,r2:0.066,p:313158825,pr:11.42,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AZZ",n:"Azz Inc",r1:4.4,r2:0.034,p:271286267,pr:31.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BAND",n:"Bandwidth Inc",r1:3.8,r2:0.047,p:440083332,pr:151.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BANF",n:"Bancfirst Corp",r1:4.8,r2:0.038,p:320513660,pr:42.61,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BANFP",n:"Bfc Capital Trust II",r1:4.1,r2:0.064,p:483795100,pr:27.82,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BANR",n:"Banner Corp",r1:3.4,r2:0.033,p:340214068,pr:35.03,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BANX",n:"Stonecastle Fncl Cp",r1:3.3,r2:0.03,p:47532434,pr:16.51,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BASI",n:"Bioanalytical Syst",r1:3.0,r2:0.047,p:306905597,pr:5.35,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BATRA",n:"Liberty Braves CS A",r1:3.5,r2:0.034,p:363477914,pr:19.28,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BATRK",n:"Liberty Braves CS C",r1:4.3,r2:0.047,p:353692460,pr:19.01,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBBY",n:"Bed Bath & Beyond",r1:4.7,r2:0.067,p:322529003,pr:11.23,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBCP",n:"Concrete Pumping Holdings Inc",r1:4.2,r2:0.076,p:222569483,pr:3.87,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBGI",n:"Beasley Brdcst Gr",r1:4.0,r2:0.059,p:464205722,pr:1.8,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBH",n:"Biotech Vaneck ETF",r1:4.5,r2:0.024,p:92961394,pr:167.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBI",n:"Brickell Biotech Inc",r1:3.6,r2:0.065,p:294603524,pr:0.91,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBIO",n:"Bridgebio Pharma Inc",r1:3.5,r2:0.027,p:354338995,pr:27.41,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBQ",n:"Bbq Holdings Inc",r1:4.3,r2:0.077,p:260236088,pr:2.98,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBSI",n:"Barrett Business S",r1:3.9,r2:0.025,p:29930392,pr:55.74,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCBP",n:"Bcb Bancorp Inc",r1:3.8,r2:0.039,p:135183951,pr:8.16,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCDA",n:"Biocardia Inc",r1:3.2,r2:0.078,p:427979306,pr:2.47,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCDAW",n:"Biocardia Inc WT",r1:4.0,r2:0.077,p:509786208,pr:0.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCEL",n:"Atreca Inc Cl A",r1:4.2,r2:0.036,p:30115836,pr:13.16,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCLI",n:"Brainstorm Cell",r1:4.4,r2:0.048,p:335754744,pr:14.09,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCML",n:"Bay Commercial Bk CA",r1:4.6,r2:0.031,p:302664812,pr:10.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCOM",n:"B Communications Ltd",r1:4.1,r2:0.05,p:55621203,pr:2.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCOR",n:"Blucora Inc",r1:3.6,r2:0.04,p:345066754,pr:12.13,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCOV",n:"Brightcove Inc",r1:4.5,r2:0.04,p:356836836,pr:10.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCOW",n:"1895 Bancorp of Wisconsin Inc",r1:3.5,r2:0.077,p:416783017,pr:9.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCPC",n:"Balchem Cp",r1:4.0,r2:0.047,p:167258578,pr:102.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCRX",n:"Biocryst Pharma Inc",r1:3.6,r2:0.078,p:212087528,pr:4.29,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCTF",n:"Bancorp 34 Inc",r1:3.9,r2:0.079,p:338830193,pr:11.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BCYC",n:"Bicycle Therapeutics Plc ADR",r1:4.0,r2:0.045,p:103791270,pr:15.68,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BDGE",n:"Bridge Bancorp Inc",r1:3.7,r2:0.065,p:322704371,pr:18.54,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BDSI",n:"Biodelivery Sci Intl",r1:4.4,r2:0.032,p:284609819,pr:4.36,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BDTX",n:"Black Diamond Therapeutics Inc",r1:4.7,r2:0.046,p:359125014,pr:30.08,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BEAM",n:"Beam Therapeutics Inc",r1:3.2,r2:0.078,p:314435833,pr:19.05,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BEAT",n:"Biotelemetry Inc",r1:3.4,r2:0.03,p:285419503,pr:44.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BECN",n:"Beacon Roofing Suppl",r1:4.0,r2:0.026,p:506128569,pr:31.79,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BELFA",n:"Bel Fuse Cl A",r1:4.6,r2:0.048,p:68733074,pr:12.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BELFB",n:"Bel Fuse Inc Cl B",r1:4.5,r2:0.05,p:368301662,pr:12.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BFC",n:"Bank First National Corp [Wisconsin]",r1:3.9,r2:0.036,p:427361972,pr:63.78,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BFIN",n:"Bankfinancial Corp",r1:4.8,r2:0.035,p:285632538,pr:7.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BFIT",n:"G-X Health & Wellness Thematic Et",r1:3.7,r2:0.075,p:264120445,pr:20.31,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BFRA",n:"Biofrontera Ag ADR",r1:4.6,r2:0.072,p:148123701,pr:5.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BFST",n:"Business First Bancshares Inc",r1:4.4,r2:0.045,p:477124196,pr:13.34,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BFYT",n:"Benefytt Technologies Inc.",r1:3.9,r2:0.069,p:151419491,pr:30.94,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BGCP",n:"Bgc Partners Cl A",r1:3.5,r2:0.055,p:509451166,pr:2.76,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BGFV",n:"Big 5 Sporting",r1:3.9,r2:0.029,p:279290288,pr:5.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BGNE",n:"Beigene Ltd Ads",r1:3.6,r2:0.053,p:281715031,pr:218.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BGRN",n:"Ishares Global Green Bond ETF",r1:3.8,r2:0.039,p:104326186,pr:55.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BHAT",n:"Blue Hat Interactive Entertainment Tech",r1:4.3,r2:0.054,p:126781223,pr:1.26,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BHF",n:"Brighthouse Financial Inc",r1:4.4,r2:0.023,p:382352575,pr:28.79,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BHFAL",n:"Brighthouse Financial Inc 6.25% Junior",r1:4.3,r2:0.069,p:203039376,pr:26.64,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BHFAO",n:"Brighthouse Financial Inc",r1:4.2,r2:0.069,p:500409069,pr:26.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BHFAP",n:"Brighthouse Financial Inc Dep Shs Repstg",r1:3.9,r2:0.022,p:261145575,pr:26.46,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BHTG",n:"Biohitech Global Inc",r1:4.1,r2:0.072,p:447095187,pr:1.73,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIB",n:"Ultra Nasdaq Biotech Proshares",r1:3.8,r2:0.052,p:238464037,pr:72.76,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BICK",n:"BICK Index Fund FT",r1:4.3,r2:0.045,p:337390663,pr:29.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIDU",n:"Baidu Inc",r1:3.3,r2:0.048,p:494601815,pr:124.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIIB",n:"Biogen Inc",r1:3.6,r2:0.062,p:334918326,pr:276.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BILI",n:"Bilibili Inc ADR",r1:4.5,r2:0.071,p:439671092,pr:45.09,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIMI",n:"NF Energy Saving Corp",r1:3.7,r2:0.039,p:369358712,pr:2.05,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIOC",n:"Biocept Inc",r1:4.4,r2:0.072,p:27949549,pr:0.75,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIOL",n:"Biolase Inc",r1:3.1,r2:0.058,p:470464549,pr:0.41,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIS",n:"Ultrashort Biotechnology Proshares",r1:4.8,r2:0.065,p:226985735,pr:7.81,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BJK",n:"Gaming ETF Vaneck",r1:3.2,r2:0.058,p:446289616,pr:34.8,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BJRI",n:"Bj's Restaurants Inc",r1:3.8,r2:0.062,p:461712031,pr:20.68,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKCC",n:"Blackrock Cptl Invt",r1:3.1,r2:0.068,p:156683887,pr:2.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKEP",n:"Blueknight Energy LP",r1:3.7,r2:0.029,p:275583159,pr:1.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKEPP",n:"Blueknight Srs A Uts",r1:4.0,r2:0.068,p:94991824,pr:5.71,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKNG",n:"Booking Holdings Inc",r1:3.1,r2:0.072,p:319855184,pr:1677.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKSC",n:"Bank of So Car Cp",r1:3.4,r2:0.075,p:81558860,pr:17.29,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKYI",n:"Bio-Key Intl Inc",r1:3.8,r2:0.035,p:137663354,pr:0.7,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BL",n:"Blackline Inc",r1:3.0,r2:0.068,p:460604711,pr:90.49,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLBD",n:"Blue Bird Corp",r1:4.2,r2:0.029,p:230864891,pr:13.01,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLCM",n:"Bellicum Pharma Comm",r1:3.6,r2:0.055,p:329469351,pr:6.99,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLCN",n:"Reality Shares Nasdaq Nextgen Economy",r1:3.8,r2:0.035,p:432651962,pr:34.36,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLCT",n:"Bluecity Holdings Limited ADR",r1:3.4,r2:0.043,p:251604030,pr:15.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLDP",n:"Ballard Power Sys",r1:3.4,r2:0.054,p:297405965,pr:15.17,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLDR",n:"Builders Firstsource",r1:4.8,r2:0.038,p:498972242,pr:26.46,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLFS",n:"Biolife Solutions",r1:4.2,r2:0.036,p:292964508,pr:20.93,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLI",n:"Berkeley Lights Inc",r1:4.2,r2:0.065,p:34522125,pr:75.47,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLIN",n:"Bridgeline Digital",r1:4.1,r2:0.05,p:462077645,pr:3.26,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLKB",n:"Blackbaud Inc",r1:3.5,r2:0.068,p:313532499,pr:64.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLMN",n:"Bloomin' Brands Inc",r1:3.6,r2:0.058,p:320445581,pr:11.17,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLNK",n:"Blink Charging Company",r1:4.2,r2:0.063,p:339590770,pr:12.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLNKW",n:"Blink Charging Co. WT",r1:4.5,r2:0.058,p:461701852,pr:8.25,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLPH",n:"Bellerophon Ther Com",r1:4.2,r2:0.039,p:230411595,pr:12.53,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLRX",n:"Biolinerx Ltd",r1:4.0,r2:0.064,p:55066687,pr:2.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLU",n:"Bellus Health Inc",r1:3.5,r2:0.065,p:97820035,pr:2.69,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BLUE",n:"Bluebird Bio",r1:3.2,r2:0.052,p:495744790,pr:62.83,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BMCH",n:"Bmc Stock Holdings",r1:4.0,r2:0.075,p:425236309,pr:31.28,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BMLP",n:"Dorsey Wright MLP Index ETN",r1:3.5,r2:0.069,p:250923914,pr:30.81,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BMRA",n:"Biomerica Inc",r1:4.5,r2:0.065,p:179357626,pr:9.09,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BMRC",n:"Bank of Marin Bancrp",r1:3.2,r2:0.078,p:80378507,pr:31.54,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BMRN",n:"Biomarin Pharmaceuticals",r1:4.7,r2:0.072,p:372108356,pr:119.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BMTC",n:"Bryn Mawr Bank Corp",r1:4.8,r2:0.078,p:412293822,pr:26.23,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BND",n:"Total Bond Market ETF Vanguard",r1:3.7,r2:0.067,p:16959327,pr:89.42,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNDW",n:"Total World Bond Vanguard ETF",r1:4.0,r2:0.047,p:346414190,pr:82.36,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNDX",n:"Total Intl Bond ETF Vanguard",r1:4.2,r2:0.055,p:421208650,pr:58.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNFT",n:"Benefitfocus",r1:4.7,r2:0.027,p:126910951,pr:12.06,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNGO",n:"Bionano Genomics Inc",r1:3.0,r2:0.073,p:290703691,pr:0.77,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNGOW",n:"Bionano Genomics Inc WT",r1:4.6,r2:0.033,p:41608520,pr:0.23,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNR",n:"Burning Rock Biotech Limited ADR",r1:4.5,r2:0.075,p:161095087,pr:25.21,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNSO",n:"Bonso Elec Intl IN",r1:3.7,r2:0.028,p:483130766,pr:2.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNTC",n:"Benitec Biopharma Ltd",r1:3.5,r2:0.05,p:58595999,pr:7.28,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BNTX",n:"Biontech Se ADR",r1:4.6,r2:0.028,p:236821878,pr:82.04,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOCH",n:"Bank of Commerce Hld",r1:4.2,r2:0.065,p:482987042,pr:7.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOKF",n:"Bok Financial Corp",r1:3.8,r2:0.065,p:87261451,pr:55.16,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOKFL",n:"Bok Financial Corp",r1:3.7,r2:0.026,p:254673518,pr:25.91,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOMN",n:"Boston Omaha Corp Cl A",r1:3.7,r2:0.077,p:26358143,pr:15.82,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOOM",n:"Dynamic Materials",r1:3.7,r2:0.047,p:485277584,pr:30.31,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOSC",n:"Bos Better Online",r1:4.5,r2:0.026,p:352840132,pr:2.97,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOTJ",n:"Bank of The Jame Fnl",r1:4.0,r2:0.079,p:189336920,pr:10.44,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOTZ",n:"G-X Robotics & Artificial Intel Thmtc",r1:3.7,r2:0.031,p:71079859,pr:25.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BOXL",n:"Boxlight Corp Cl A",r1:4.5,r2:0.047,p:341384369,pr:2.21,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPFH",n:"Boston Pvt Finl Hld",r1:4.2,r2:0.056,p:20678727,pr:5.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPMC",n:"Blueprint Medicines Corp",r1:4.4,r2:0.035,p:72961942,pr:73.78,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPOP",n:"Popular Inc",r1:4.0,r2:0.024,p:392578687,pr:36.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPOPM",n:"Popular Inc Trust II",r1:3.4,r2:0.033,p:444847713,pr:25.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPOPN",n:"Popular Inc Trust",r1:3.6,r2:0.029,p:460265517,pr:26.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPRN",n:"Bank of Princeton",r1:3.0,r2:0.072,p:82343990,pr:18.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPTH",n:"Bio-Path Holdings",r1:3.2,r2:0.035,p:97248560,pr:5.08,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPY",n:"Brookfield Property Partners L",r1:4.2,r2:0.022,p:17430163,pr:11.53,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPYPN",n:"Brookfield Property Partners L.P. 5.75%",r1:4.4,r2:0.034,p:171885730,pr:18.43,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPYPO",n:"Brookfield Property Partners L.P. 6.375%",r1:3.3,r2:0.023,p:380859028,pr:19.98,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPYPP",n:"Brookfield Property Partners LP Pfd Unit",r1:3.9,r2:0.065,p:248122982,pr:20.45,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPYU",n:"Brookfield Property REIT Inc",r1:4.4,r2:0.051,p:64527005,pr:11.74,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BPYUP",n:"Brookfield Property REIT Inc 6.375%",r1:3.9,r2:0.077,p:31682518,pr:16.6,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BREW",n:"Craft Brew Alliance",r1:4.4,r2:0.072,p:270725607,pr:14.91,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRID",n:"Bridgford Foods Cp",r1:3.8,r2:0.078,p:40412703,pr:16.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRKL",n:"Brookline Bancorp",r1:3.9,r2:0.044,p:353048748,pr:9.44,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRKR",n:"Bruker Corp",r1:3.9,r2:0.075,p:46745357,pr:45.01,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRKS",n:"Brooks Automation",r1:3.1,r2:0.056,p:42841116,pr:55.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRLI",n:"Brilliant Acquisition Corp",r1:3.5,r2:0.058,p:284178217,pr:9.81,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRLIR",n:"Brilliant Acquisition Corporation Rights",r1:3.6,r2:0.08,p:275278418,pr:0.13,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRLIU",n:"Brilliant Acquisition Corp",r1:3.8,r2:0.056,p:59589230,pr:9.99,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRLIW",n:"Brilliant Acquisition Corporation",r1:4.3,r2:0.071,p:335458332,pr:0.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BROG",n:"Brooge Holdings Ltd.",r1:4.4,r2:0.063,p:117511533,pr:9.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BROGW",n:"Brooge Holdings Ltd. Warrants",r1:3.8,r2:0.034,p:179465809,pr:0.73,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRP",n:"Brp Group Inc Cl A",r1:3.8,r2:0.045,p:57542919,pr:17.33,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRPA",n:"Big Rock Partners Acquisition Corp",r1:3.8,r2:0.06,p:197150511,pr:10.71,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRPAR",n:"Big Rock Partners Acquisition Corp Right",r1:3.3,r2:0.075,p:43566654,pr:0.31,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRPAW",n:"Big Rock Partners Acquisition Corp WT",r1:4.5,r2:0.026,p:58282216,pr:0.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRQS",n:"Borqs Technologies Inc",r1:4.3,r2:0.069,p:288185367,pr:1.04,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BRY",n:"Berry Pete Corp",r1:4.1,r2:0.054,p:174822990,pr:4.79,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSAE",n:"Invesco Bulletshares 2021 USD EM Debt",r1:3.2,r2:0.041,p:342670260,pr:25.43,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSBE",n:"Invesco Bulletshares 2022 USD Emerging",r1:4.4,r2:0.072,p:370530339,pr:25.84,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSBK",n:"Bogota Financial Corp",r1:4.7,r2:0.056,p:185823092,pr:7.75,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCE",n:"Invesco Bulletshares 2023 USD EM Debt",r1:4.0,r2:0.033,p:338368151,pr:26.02,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCK",n:"Bs 2020 Corp Bond Invesco ETF",r1:3.4,r2:0.026,p:432686709,pr:21.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCL",n:"Bs 2021 Corp Bond Invesco ETF",r1:3.7,r2:0.066,p:297050002,pr:21.38,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCM",n:"Bs 2022 Corp Bond Invesco ETF",r1:4.5,r2:0.071,p:497273301,pr:21.89,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCN",n:"Bs 2023 Corp Bond Invesco ETF",r1:4.5,r2:0.057,p:331349581,pr:21.88,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCO",n:"Bs 2024 Corp Bond Invesco ETF",r1:3.0,r2:0.076,p:424730394,pr:22.33,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCP",n:"Bs 2025 Corp Bond Invesco ETF",r1:3.5,r2:0.031,p:361349386,pr:22.51,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCQ",n:"Bs 2026 Corp Bond Invesco ETF",r1:3.6,r2:0.04,p:13052894,pr:21.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCR",n:"Bs 2027 Corp Bond Invesco ETF",r1:4.6,r2:0.054,p:210392171,pr:22.24,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCS",n:"Invesco Bulletshares 2028 Corporate Bond",r1:3.3,r2:0.058,p:25328549,pr:23.48,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSCT",n:"Invesco 2029 Corporate Bond ETF",r1:4.3,r2:0.033,p:219916246,pr:21.81,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSDE",n:"Invesco Bulletshares 2024 USD Emerging",r1:3.6,r2:0.042,p:370797983,pr:25.86,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSET",n:"Bassett Furniture",r1:4.4,r2:0.054,p:52478519,pr:9.18,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSGM",n:"Biosig Technologies",r1:3.1,r2:0.029,p:318919090,pr:8.85,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJK",n:"Bs 2020 High Yield Corp Bond Invesco ETF",r1:4.2,r2:0.036,p:340969346,pr:23.41,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJL",n:"Bs 2021 High Yield Corp Bond Invesco ETF",r1:3.9,r2:0.047,p:146583422,pr:23.15,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJM",n:"Bs 2022 High Yield Corp Bond Invesco ETF",r1:4.4,r2:0.027,p:224956816,pr:23.05,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJN",n:"Bs 2023 High Yield Corp Bond Invesco ETF",r1:3.5,r2:0.061,p:253316376,pr:24.84,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJO",n:"Bs 2024 High Yield Corp Bond Invesco ETF",r1:4.2,r2:0.023,p:207631698,pr:24.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJP",n:"Bs 2025 High Yield Corp Bond Invesco ETF",r1:4.1,r2:0.02,p:160709681,pr:23.69,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJQ",n:"Invesco Bulletshares 2026 High Yield",r1:3.4,r2:0.028,p:137759752,pr:24.1,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSJR",n:"Invesco 2027 High Yield Corporate Bond",r1:3.6,r2:0.02,p:383507061,pr:24.78,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSML",n:"Invesco Bulletshares 2021 Municipal Bond",r1:3.3,r2:0.043,p:361835631,pr:25.33,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMM",n:"Invesco Bulletshares 2022 Municipal Bond",r1:3.9,r2:0.07,p:413100093,pr:25.44,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMN",n:"Invesco Bulletshares 2023 Municipal Bond",r1:3.1,r2:0.072,p:31151130,pr:25.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMO",n:"Invesco Bulletshares 2024 Municipal Bond",r1:3.0,r2:0.075,p:441055006,pr:25.63,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMP",n:"Invesco Bulletshares 2025 Municipal Bond",r1:4.0,r2:0.054,p:364749480,pr:25.83,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMQ",n:"Invesco Bulletshares 2026 Municipal Bond",r1:3.8,r2:0.027,p:20428279,pr:25.63,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMR",n:"Invesco Bulletshares 2027 Municipal Bond",r1:3.6,r2:0.068,p:319062631,pr:25.57,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMS",n:"Invesco Bulletshares 2028 Municipal Bond",r1:4.5,r2:0.075,p:54064940,pr:26.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSMT",n:"Invesco Bulletshares 2029 Municipal Bond",r1:4.5,r2:0.035,p:304435644,pr:25.93,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSQR",n:"Bsquare Corp",r1:3.9,r2:0.044,p:165137280,pr:1.5,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSRR",n:"Sierra Bancorp",r1:3.6,r2:0.04,p:94066354,pr:17.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSTC",n:"Biospecifics Tech Cp",r1:3.9,r2:0.027,p:264976031,pr:64.3,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BSVN",n:"Bank7 Corp",r1:4.6,r2:0.041,p:373689552,pr:9.79,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BTAI",n:"Bioxcel Therapeutics Inc",r1:4.5,r2:0.069,p:128134424,pr:47.4,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BTEC",n:"Principal Healthcare Innovators Index",r1:3.3,r2:0.032,p:311199492,pr:45.95,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BUG",n:"Global X Cybersecurity ETF",r1:4.4,r2:0.059,p:98573064,pr:22.42,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BUSE",n:"First Busey Corp",r1:4.4,r2:0.05,p:387222912,pr:17.12,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BVXV",n:"Biondvax Pharma Ads",r1:4.4,r2:0.047,p:472077129,pr:40.75,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BWAY",n:"Brainsway Ltd ADR",r1:4.0,r2:0.058,p:322260889,pr:6.04,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BWB",n:"Bridgewater Bancshares Inc",r1:4.6,r2:0.058,p:85478700,pr:9.27,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BWEN",n:"Broadwind Energy Inc",r1:3.1,r2:0.047,p:161410217,pr:4.51,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BWFG",n:"Bankwell Financial",r1:3.5,r2:0.023,p:263668442,pr:15.03,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BWMX",n:"Betterware DE Mexico Da DE Cv",r1:3.6,r2:0.047,p:38445025,pr:11.64,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BXRX",n:"Baudax Bio Inc",r1:4.5,r2:0.025,p:442125016,pr:3.59,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BYFC",n:"Broadway Fin Cp",r1:4.5,r2:0.057,p:263533908,pr:1.9,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BYND",n:"Beyond Meat Inc",r1:3.8,r2:0.053,p:405908898,pr:139.0,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BYSI",n:"Beyondspring Inc",r1:4.6,r2:0.047,p:414907958,pr:11.54,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BZUN",n:"Baozun Inc Ads",r1:4.2,r2:0.039,p:247814513,pr:42.75,ex:"NYSE",tp:"Equity",au:"Authorized",sec:"General"},
+// NASDAQ
+{t:"AAPL",n:"Apple Inc. Common Stock",r1:3.3,r2:0.024,p:61750938,pr:308.63,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BAND",n:"Bandwidth Inc",r1:4.6,r2:0.041,p:367157774,pr:153.8,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BANF",n:"Bancfirst Corp",r1:3.9,r2:0.03,p:133871861,pr:43.41,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BBBY",n:"Bed Bath & Beyond",r1:3.8,r2:0.046,p:271374017,pr:11.35,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIDU",n:"Baidu Inc",r1:3.3,r2:0.042,p:151446789,pr:125.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIIB",n:"Biogen Inc",r1:3.7,r2:0.04,p:308942931,pr:278.6,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BKNG",n:"Booking Holdings Inc",r1:4.4,r2:0.059,p:42955927,pr:1680.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADBE",n:"Adobe Systems Inc",r1:3.2,r2:0.061,p:152073486,pr:449.1,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ADP",n:"Automatic Data Procs",r1:4.3,r2:0.059,p:463171348,pr:136.7,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALGN",n:"Align Technology",r1:4.6,r2:0.04,p:301369757,pr:288.3,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMD",n:"Adv Micro Devices",r1:3.3,r2:0.041,p:493848253,pr:83.39,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMGN",n:"Amgen Inc",r1:4.3,r2:0.044,p:307520614,pr:246.2,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AMZN",n:"Amazon.com Inc",r1:4.7,r2:0.039,p:198339653,pr:242.67,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ANSS",n:"Ansys Inc",r1:4.4,r2:0.069,p:345058199,pr:314.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASML",n:"Asml Hld NY Reg",r1:4.5,r2:0.064,p:352707220,pr:371.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AVGO",n:"Broadcom Ltd",r1:3.9,r2:0.059,p:221703183,pr:325.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CDNS",n:"Cadence Design Sys",r1:3.7,r2:0.042,p:100131461,pr:112.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CMCSA",n:"Comcast Corp A",r1:3.4,r2:0.077,p:253135460,pr:43.24,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"COST",n:"Costco Wholesale",r1:3.4,r2:0.028,p:48582542,pr:336.1,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CPRT",n:"Copart Inc",r1:4.5,r2:0.026,p:395437360,pr:96.41,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CRWD",n:"Crowdstrike Holdings Inc",r1:4.5,r2:0.073,p:28873746,pr:116.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CSCO",n:"Cisco Systems Inc",r1:3.6,r2:0.066,p:75524520,pr:47.46,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CTAS",n:"Cintas Corp",r1:3.7,r2:0.03,p:425672528,pr:301.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CTSH",n:"Cognizant Tech Sol",r1:4.4,r2:0.069,p:92769582,pr:67.99,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"EA",n:"Electronic Arts Inc",r1:3.8,r2:0.045,p:348181461,pr:145.4,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"EBAY",n:"Ebay Inc",r1:3.4,r2:0.047,p:152463966,pr:56.78,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ERIC",n:"Ericsson ADR",r1:4.3,r2:0.047,p:277005574,pr:11.73,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DDOG",n:"Datadog Inc Cl A",r1:3.6,r2:0.069,p:244507802,pr:96.15,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DLTR",n:"Dollar Tree Inc",r1:4.5,r2:0.042,p:483565085,pr:95.65,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DOCU",n:"Docusign Inc",r1:4.8,r2:0.048,p:150885866,pr:226.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DXCM",n:"Dexcom",r1:3.7,r2:0.052,p:493134076,pr:442.8,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"FAST",n:"Fastenal Company",r1:4.5,r2:0.068,p:79199267,pr:47.59,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"FTNT",n:"Fortinet Inc",r1:3.5,r2:0.058,p:447058472,pr:138.4,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"GILD",n:"Gilead Sciences Inc",r1:4.0,r2:0.026,p:432946138,pr:72.31,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"GOOGL",n:"Alphabet Cl A",r1:4.5,r2:0.037,p:391558415,pr:359.91,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"IDXX",n:"Idexx Laboratories",r1:3.5,r2:0.074,p:83674327,pr:394.7,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"INTC",n:"Intel Corp",r1:3.8,r2:0.077,p:121019003,pr:49.09,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"INTU",n:"Intuit Inc",r1:3.8,r2:0.041,p:23335095,pr:312.3,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ISRG",n:"Intuitive Surg Inc",r1:3.1,r2:0.05,p:127889036,pr:688.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"JD",n:"Jd.com Inc Ads",r1:4.8,r2:0.042,p:24093772,pr:65.13,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"LRCX",n:"Lam Research Corp",r1:4.7,r2:0.07,p:334980342,pr:385.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"LULU",n:"Lululemon Athletica",r1:4.4,r2:0.028,p:153439698,pr:329.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MAR",n:"Marriot Int Cl A",r1:4.5,r2:0.062,p:79396345,pr:85.53,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MCHP",n:"Microchip Technology",r1:4.3,r2:0.047,p:12625599,pr:106.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MDB",n:"Mongodb Inc Cl A",r1:3.1,r2:0.035,p:427481549,pr:220.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MDLZ",n:"Mondelez Intl Inc",r1:4.0,r2:0.064,p:273885752,pr:55.59,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MELI",n:"Mercadolibre Inc",r1:3.2,r2:0.037,p:160575597,pr:1173.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MNST",n:"Monster Beverage Cp",r1:3.1,r2:0.045,p:406949554,pr:78.04,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MRVL",n:"Marvell Tech Group",r1:3.8,r2:0.027,p:462573442,pr:37.58,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MSFT",n:"Microsoft Corp",r1:4.1,r2:0.021,p:267687865,pr:390.49,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NFLX",n:"Netflix Inc",r1:3.4,r2:0.029,p:224619446,pr:509.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NVDA",n:"Nvidia Corp",r1:4.1,r2:0.034,p:218283797,pr:194.83,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NXPI",n:"Nxp Semiconductors",r1:4.2,r2:0.025,p:497327245,pr:121.3,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ODFL",n:"Old Dominion Freight Line Inc.",r1:3.1,r2:0.052,p:263663848,pr:184.6,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OKTA",n:"Okta Inc Cl A",r1:4.8,r2:0.053,p:205226866,pr:221.6,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ORLY",n:"O'Reilly Automotive",r1:3.8,r2:0.058,p:500519711,pr:473.1,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"QCOM",n:"Qualcomm Inc",r1:3.5,r2:0.021,p:404260008,pr:110.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"REGN",n:"Regeneron Pharmaceuticals",r1:3.6,r2:0.064,p:324128481,pr:654.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ROKU",n:"Roku Inc",r1:4.4,r2:0.064,p:176259304,pr:168.2,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ROST",n:"Ross Stores Inc",r1:3.1,r2:0.053,p:416754432,pr:88.3,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SBUX",n:"Starbucks Corp",r1:3.3,r2:0.067,p:242311449,pr:75.37,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SIRI",n:"Sirius XM Holdings",r1:4.3,r2:0.058,p:415748840,pr:5.94,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SNPS",n:"Synopsys Inc",r1:3.1,r2:0.067,p:238839788,pr:202.8,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SWKS",n:"Skyworks Solutions",r1:3.5,r2:0.023,p:109734916,pr:147.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TEAM",n:"Atlassian Cls A Ord",r1:3.1,r2:0.076,p:267691794,pr:180.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TMUS",n:"T-Mobile US",r1:4.8,r2:0.053,p:136656882,pr:107.9,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TSLA",n:"Tesla Inc",r1:4.4,r2:0.031,p:188487088,pr:393.45,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TXN",n:"Texas Instruments",r1:4.4,r2:0.072,p:175962343,pr:131.5,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VRSK",n:"Verisk Analytics Inc",r1:3.2,r2:0.042,p:454743258,pr:188.6,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VRTX",n:"Vertex Pharmaceutic",r1:4.3,r2:0.074,p:203322384,pr:280.6,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"WBA",n:"Walgreens Boots Alliance",r1:4.8,r2:0.05,p:258761696,pr:41.07,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"WDAY",n:"Workday Inc",r1:4.7,r2:0.051,p:410574043,pr:182.3,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ZM",n:"Zoom Video Communications Cl A",r1:4.3,r2:0.025,p:311226649,pr:269.2,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ZS",n:"Zscaler Inc",r1:4.5,r2:0.053,p:170605714,pr:133.0,ex:"NASDAQ",tp:"Equity",au:"Authorized",sec:"General"},
+// LSE
+{t:"SHEL",n:"Shell plc",r1:3.4,r2:0.046,p:712991712,pr:31.25,ex:"LSE",tp:"Energy",au:"Authorized",sec:"Oil & Gas",ceo:"Wael Sawan",hq:"London, UK",yr:1907},
+{t:"HSBA",n:"HSBC Holdings plc",r1:4.1,r2:0.037,p:1479529616,pr:7.42,ex:"LSE",tp:"Investment Bank",au:"Authorized",sec:"Banking",ceo:"Georges Elhedery",hq:"London, UK",yr:1865},
+{t:"AZN",n:"AstraZeneca plc",r1:3.8,r2:0.022,p:1840074350,pr:122.6,ex:"LSE",tp:"Pharmaceutical",au:"Authorized",sec:"Biopharmaceuticals",ceo:"Pascal Soriot",hq:"Cambridge, UK",yr:1999},
+{t:"ULVR",n:"Unilever plc",r1:3.8,r2:0.06,p:649110720,pr:44.85,ex:"LSE",tp:"Consumer",au:"Authorized",sec:"Consumer Goods",ceo:"Hein Schumacher",hq:"London, UK",yr:1929},
+{t:"BP",n:"BP plc",r1:4.6,r2:0.058,p:250082329,pr:4.95,ex:"LSE",tp:"Energy",au:"Authorized",sec:"Oil & Gas",ceo:"Murray Auchincloss",hq:"London, UK",yr:1909},
+{t:"GLEN",n:"Glencore plc",r1:4.1,r2:0.035,p:1702191951,pr:4.22,ex:"LSE",tp:"Mining",au:"Authorized",sec:"Commodities",ceo:"Gary Nagle",hq:"Baar, Switzerland",yr:1974},
+{t:"RIO",n:"Rio Tinto Group",r1:4.2,r2:0.058,p:385558936,pr:58.3,ex:"LSE",tp:"Mining",au:"Authorized",sec:"Mining",ceo:"Jakob Stausholm",hq:"London, UK",yr:1873},
+{t:"GSK",n:"GSK plc",r1:4.1,r2:0.051,p:169597931,pr:16.52,ex:"LSE",tp:"Pharmaceutical",au:"Authorized",sec:"Pharmaceuticals",ceo:"Emma Walmsley",hq:"London, UK",yr:2000},
+{t:"VOD",n:"Vodafone Group plc",r1:3.4,r2:0.051,p:832656946,pr:103.5,ex:"LSE",tp:"Telecommunications",au:"Authorized",sec:"Telecom",ceo:"Margherita Della Valle",hq:"Newbury, UK",yr:1991},
+// OMXH (Helsinki)
+{t:"AFAGR",n:"Afarak Group Oyj",r1:4.0,r2:0.056,p:349531028,pr:22.23,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AM1",n:"Ahlstrom-Munksjö Oyj",r1:3.7,r2:0.066,p:296960889,pr:47.7,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"AKTIA",n:"Aktia Bank Abp",r1:3.7,r2:0.059,p:134805826,pr:28.83,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALMA",n:"Alma Media Oyj",r1:4.3,r2:0.05,p:203493690,pr:10.11,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALTIA",n:"Altia Oyj",r1:3.5,r2:0.036,p:233136556,pr:30.28,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"APETIT",n:"Apetit Oyj",r1:3.5,r2:0.075,p:255600097,pr:49.84,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TALLINK",n:"AS Tallink Grupp FDR",r1:4.5,r2:0.047,p:459339515,pr:10.52,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ASPO",n:"Aspo Oyj",r1:3.2,r2:0.061,p:432760609,pr:25.03,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ACG1V",n:"Aspocomp Group Oyj",r1:3.6,r2:0.024,p:281085680,pr:19.38,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ATRAV",n:"Atria Oyj A",r1:4.5,r2:0.063,p:473662228,pr:45.11,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BAS1V",n:"Basware Oyj",r1:4.4,r2:0.051,p:70681227,pr:33.7,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BIOBV",n:"Biohit Oyj B",r1:3.2,r2:0.067,p:23142013,pr:14.04,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"BITTI",n:"Bittium Oyj",r1:3.7,r2:0.068,p:285823466,pr:29.93,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CAPMAN",n:"CapMan Oyj",r1:3.2,r2:0.039,p:509797521,pr:32.54,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CGCBV",n:"Cargotec Oyj",r1:3.9,r2:0.066,p:421669699,pr:37.35,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CAV1V",n:"Caverion Oyj",r1:4.8,r2:0.059,p:234987247,pr:8.32,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CTY1S",n:"Citycon Oyj",r1:3.6,r2:0.073,p:400131464,pr:35.6,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CTH1V",n:"Componenta Oyj",r1:3.3,r2:0.078,p:226309143,pr:33.79,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"CONSTI",n:"Consti Oyj",r1:3.1,r2:0.027,p:86507733,pr:45.98,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DIGIA",n:"Digia Oyj",r1:3.6,r2:0.063,p:183011541,pr:12.41,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DIGIGR",n:"Digitalist Group Oyj",r1:4.6,r2:0.071,p:135302654,pr:47.34,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"DOV1V",n:"Dovre Group Oyj",r1:4.0,r2:0.028,p:161412303,pr:33.58,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"EAB",n:"EAB Group Oyj",r1:3.9,r2:0.03,p:480803493,pr:29.01,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ELEAV",n:"Elecster Oyj A",r1:4.2,r2:0.063,p:312569453,pr:11.94,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ELISA",n:"Elisa Oyj",r1:4.0,r2:0.07,p:24186743,pr:42.91,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ENDOM",n:"Endomines",r1:4.2,r2:0.055,p:335564988,pr:7.05,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ENEDO",n:"Enedo Oyj",r1:3.7,r2:0.058,p:259019030,pr:39.51,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ENENTO",n:"Enento Group Oyj",r1:3.5,r2:0.077,p:251472409,pr:33.22,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"EQV1V",n:"eQ Oyj",r1:4.2,r2:0.038,p:46486512,pr:41.21,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ETTE",n:"Etteplan Oyj",r1:3.8,r2:0.049,p:112011506,pr:7.7,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"EVLI",n:"Evli Pankki Oyj",r1:3.6,r2:0.063,p:377099877,pr:32.3,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"EXL1V",n:"Exel Composites Oyj",r1:4.8,r2:0.028,p:195270099,pr:43.73,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"FSC1V",n:"F-Secure Oyj",r1:3.6,r2:0.048,p:143735837,pr:30.27,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"FIA1S",n:"Finnair Oyj",r1:3.2,r2:0.037,p:202074916,pr:16.16,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"FSKRS",n:"Fiskars Oyj Abp",r1:3.4,r2:0.072,p:89849831,pr:32.69,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"FORTUM",n:"Fortum Oyj",r1:4.0,r2:0.039,p:391560687,pr:19.73,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"GLA1V",n:"Glaston Oyj Abp",r1:3.9,r2:0.05,p:164270241,pr:27.42,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"HARVIA",n:"Harvia Oyj",r1:4.7,r2:0.05,p:493343315,pr:6.04,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"HKSAV",n:"HKScan Oyj A",r1:3.6,r2:0.023,p:257447101,pr:14.68,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"HONBS",n:"Honkarakenne Oyj B",r1:4.2,r2:0.048,p:278345374,pr:44.71,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"HUH1V",n:"Huhtamäki Oyj",r1:3.8,r2:0.073,p:373754031,pr:43.12,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ILK2S",n:"Ilkka-Yhtymä Oyj 2",r1:3.7,r2:0.044,p:295140821,pr:39.37,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ICP1V",n:"Incap Oyj",r1:4.0,r2:0.024,p:262127764,pr:13.76,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"IFA1V",n:"Innofactor Plc",r1:3.5,r2:0.079,p:350199320,pr:39.4,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"INVEST",n:"Investors House Oyj",r1:4.8,r2:0.044,p:407448614,pr:10.35,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KAMUX",n:"Kamux Oyj",r1:4.7,r2:0.065,p:109528940,pr:20.26,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KEMIRA",n:"Kemira Oyj",r1:3.9,r2:0.023,p:78518186,pr:27.91,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KSLAV",n:"Keskisuomalainen Oyj A",r1:3.9,r2:0.047,p:313130261,pr:19.99,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KESKOA",n:"Kesko Oyj A",r1:3.6,r2:0.057,p:91251022,pr:28.2,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KESKOB",n:"Kesko Oyj B",r1:4.3,r2:0.038,p:178186726,pr:49.58,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KELAS",n:"Kesla Oyj A",r1:4.0,r2:0.063,p:159895282,pr:42.27,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KOJAMO",n:"Kojamo Oyj",r1:3.7,r2:0.06,p:499949015,pr:41.71,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KNEBV",n:"KONE Oyj",r1:4.4,r2:0.064,p:354021825,pr:31.27,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"KCR",n:"Konecranes Oyj",r1:3.9,r2:0.078,p:401451995,pr:6.2,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"LAT1V",n:"Lassila & Tikanoja Oyj",r1:4.0,r2:0.063,p:301761638,pr:39.93,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"LEHTO",n:"Lehto Group Oyj",r1:4.1,r2:0.057,p:430583562,pr:12.67,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MMO1V",n:"Marimekko Oyj",r1:4.2,r2:0.022,p:484102585,pr:11.65,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MARAS",n:"Martela Oyj A",r1:3.0,r2:0.039,p:85715629,pr:9.95,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MOCORP",n:"Metso Outotec Oyj",r1:3.7,r2:0.066,p:470260474,pr:36.07,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"METSA",n:"Metsä Board Oyj A",r1:4.3,r2:0.024,p:79041242,pr:44.28,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"METSB",n:"Metsä Board Oyj B",r1:3.6,r2:0.06,p:272738575,pr:14.33,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"MUSTI",n:"Musti Group Oyj",r1:3.3,r2:0.075,p:181163508,pr:19.12,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NELES",n:"Neles Oyj",r1:4.4,r2:0.063,p:331654549,pr:20.94,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NEO1V",n:"Neo Industrial Oyj",r1:4.1,r2:0.032,p:133259567,pr:36.2,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NESTE",n:"Neste Oyj",r1:3.4,r2:0.078,p:158807282,pr:30.11,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NIXU",n:"Nixu Oyj",r1:3.4,r2:0.062,p:168520372,pr:18.01,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NOHO",n:"NoHo Partners Oyj",r1:4.7,r2:0.068,p:146728768,pr:20.7,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NOKIA",n:"Nokia Oyj",r1:4.2,r2:0.043,p:500080268,pr:10.48,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TYRES",n:"Nokian Renkaat Oyj",r1:4.7,r2:0.068,p:155226325,pr:41.83,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NDA FI",n:"Nordea Bank Abp",r1:4.3,r2:0.041,p:231188055,pr:17.94,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"NLG1V",n:"Nurminen Logistics Oyj",r1:3.9,r2:0.032,p:279288961,pr:16.54,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OLVAS",n:"Olvi Oyj A",r1:4.3,r2:0.028,p:317838517,pr:46.99,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OMASP",n:"Oma Säästöpankki Oyj",r1:3.4,r2:0.06,p:275520744,pr:31.41,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OPTOMED",n:"Optomed Oyj",r1:3.1,r2:0.045,p:368679028,pr:33.71,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OKDAV",n:"Oriola Oyj A",r1:4.4,r2:0.02,p:285176282,pr:9.52,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OKDBV",n:"Oriola Oyj B",r1:3.7,r2:0.076,p:449199810,pr:46.81,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ORNAV",n:"Orion Oyj A",r1:3.4,r2:0.078,p:170583851,pr:26.49,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ORNBV",n:"Orion Oyj B",r1:4.6,r2:0.025,p:297066676,pr:34.07,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OUT1V",n:"Outokumpu Oyj",r1:4.3,r2:0.076,p:466614862,pr:29.08,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"OVARO",n:"Ovaro Kiinteistösijoitus Oyj",r1:4.6,r2:0.031,p:469817405,pr:12.88,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"PNA1V",n:"Panostaja Oyj",r1:3.7,r2:0.05,p:478304372,pr:49.87,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"PIHLIS",n:"Pihlajalinna Oyj",r1:4.7,r2:0.073,p:14633584,pr:48.3,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"UUTEC",n:"Plc Uutechnic Group Oyj",r1:3.2,r2:0.079,p:152280826,pr:30.56,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"PON1V",n:"Ponsse Oyj 1",r1:4.0,r2:0.05,p:479280250,pr:49.51,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"PUMU",n:"PunaMusta Media Oyj",r1:3.8,r2:0.032,p:66323380,pr:43.3,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"QPR1V",n:"QPR Software Oyj",r1:3.8,r2:0.035,p:103099534,pr:12.31,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"QTCOM",n:"Qt Group Oyj",r1:4.4,r2:0.054,p:388641375,pr:38.15,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"RAIVV",n:"Raisio Oyj Vaihto-osake",r1:4.5,r2:0.074,p:423494912,pr:12.9,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"RAP1V",n:"Rapala VMC Oyj",r1:3.2,r2:0.06,p:102390600,pr:28.19,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"RAUTE",n:"Raute Oyj A",r1:3.6,r2:0.035,p:140392638,pr:11.33,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"REG1V",n:"Revenio Group Oyj",r1:4.4,r2:0.077,p:160972919,pr:15.6,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ROBIT",n:"Robit Oyj",r1:3.0,r2:0.059,p:356384295,pr:37.53,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ROVIO",n:"Rovio Entertainment Oyj",r1:3.2,r2:0.038,p:212708306,pr:7.8,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SAGCV",n:"Saga Furs Oyj C",r1:4.6,r2:0.062,p:165488974,pr:27.61,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SAMPO",n:"Sampo Oyj A",r1:4.6,r2:0.038,p:317312724,pr:10.28,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SAA1V",n:"Sanoma Oyj",r1:3.2,r2:0.029,p:383867418,pr:14.86,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SCANFL",n:"Scanfil Oyj",r1:3.7,r2:0.053,p:245414038,pr:32.26,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SIEVI",n:"Sievi Capital Oyj",r1:4.2,r2:0.033,p:133732714,pr:29.19,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SIILI",n:"Siili Solutions Oyj",r1:4.6,r2:0.025,p:233373988,pr:38.96,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SOLTEQ",n:"Solteq Oyj",r1:3.1,r2:0.054,p:40879023,pr:36.67,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SOPRA",n:"Soprano Oyj",r1:3.9,r2:0.054,p:84926190,pr:29.64,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SOSI1",n:"Sotkamo Silver AB",r1:3.9,r2:0.027,p:112700742,pr:19.77,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SRV1V",n:"SRV Yhtiöt Oyj",r1:3.2,r2:0.051,p:414346041,pr:31.24,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SSABAH",n:"SSAB A",r1:3.9,r2:0.047,p:38868390,pr:25.4,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SSABBH",n:"SSAB B",r1:4.5,r2:0.063,p:207974354,pr:25.81,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SSH1V",n:"SSH Communications Security",r1:4.3,r2:0.055,p:32644901,pr:41.74,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"STCAS",n:"Stockmann Oyj Abp A",r1:3.1,r2:0.08,p:477291399,pr:20.5,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"STCBV",n:"Stockmann Oyj Abp B",r1:4.7,r2:0.022,p:214433467,pr:8.11,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"STEAV",n:"Stora Enso Oyj A",r1:4.4,r2:0.079,p:332940409,pr:39.6,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"STERV",n:"Stora Enso Oyj R",r1:4.8,r2:0.043,p:444810142,pr:23.92,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"SUY1V",n:"Suominen Oyj",r1:3.7,r2:0.061,p:340896269,pr:45.8,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TAALA",n:"Taaleri Oyj",r1:4.2,r2:0.041,p:99236814,pr:29.27,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TNOM",n:"Talenom Oyj",r1:4.0,r2:0.064,p:121345107,pr:29.18,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TEM1V",n:"Tecnotree Oyj",r1:3.0,r2:0.038,p:346749928,pr:5.16,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TLT1V",n:"Teleste Oyj",r1:4.0,r2:0.069,p:133756019,pr:29.5,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TELIA1",n:"Telia Company",r1:3.5,r2:0.076,p:372511972,pr:20.58,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TTALO",n:"Terveystalo Oyj",r1:4.5,r2:0.045,p:393026733,pr:10.08,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TIETO",n:"TietoEVRY Oyj",r1:3.0,r2:0.032,p:60448356,pr:44.77,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TIK1V",n:"Tikkurila Oyj",r1:4.1,r2:0.062,p:34338160,pr:6.51,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TOKMAN",n:"Tokmanni Group Oyj",r1:3.7,r2:0.034,p:118634605,pr:38.32,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TRH1V",n:"Trainers´ House Oyj",r1:3.1,r2:0.05,p:154631725,pr:43.87,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"TULAV",n:"Tulikivi Oyj A",r1:4.3,r2:0.039,p:308958837,pr:41.71,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"UNIAV",n:"United Bankers Oyj",r1:3.6,r2:0.038,p:81630217,pr:35.26,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"UPM",n:"UPM-Kymmene Oyj",r1:3.4,r2:0.038,p:40478818,pr:34.71,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"UPONOR",n:"Uponor Oyj",r1:4.6,r2:0.075,p:322996568,pr:47.68,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VAIAS",n:"Vaisala Oyj A",r1:3.9,r2:0.078,p:480793204,pr:24.22,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VALMT",n:"Valmet Oyj",r1:4.4,r2:0.039,p:218162316,pr:35.21,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VALOE",n:"Valoe Oyj",r1:3.7,r2:0.065,p:246759410,pr:11.71,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VERK",n:"Verkkokauppa.com Oyj",r1:3.5,r2:0.062,p:412888079,pr:43.22,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"VIK1V",n:"Viking Line Abp",r1:4.0,r2:0.078,p:288643379,pr:46.16,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"WUF1V",n:"Wulff-Yhtiöt Oyj",r1:3.4,r2:0.032,p:333352925,pr:11.03,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"WRT1V",n:"Wärtsilä Oyj Abp",r1:4.5,r2:0.026,p:372292356,pr:46.5,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"YIT",n:"YIT Oyj",r1:3.5,r2:0.06,p:311461022,pr:13.57,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"YEINT",n:"Yleiselektroniikka Oyj",r1:3.3,r2:0.066,p:372152619,pr:44.31,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALBAV",n:"Ålandsbanken Abp A",r1:3.9,r2:0.072,p:176482155,pr:30.15,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+{t:"ALBBV",n:"Ålandsbanken Abp B",r1:3.0,r2:0.076,p:491038778,pr:48.07,ex:"OMXH",tp:"Equity",au:"Authorized",sec:"General"},
+// XETRA (DAX)
+{t:"SAP",n:"SAP SE",r1:3.4,r2:0.07,p:249460438,pr:192.4,ex:"XETRA",tp:"Technology",au:"Authorized",sec:"Enterprise Software",ceo:"Christian Klein",hq:"Walldorf, Germany",yr:1972},
+{t:"SIE",n:"Siemens AG",r1:3.6,r2:0.05,p:112256571,pr:178.9,ex:"XETRA",tp:"Industrial",au:"Authorized",sec:"Conglomerate",ceo:"Roland Busch",hq:"Munich, Germany",yr:1847},
+{t:"ALV",n:"Allianz SE",r1:4.6,r2:0.048,p:397756941,pr:262.3,ex:"XETRA",tp:"Insurance",au:"Authorized",sec:"Insurance",ceo:"Oliver Bate",hq:"Munich, Germany",yr:1890},
+{t:"DTE",n:"Deutsche Telekom AG",r1:3.8,r2:0.047,p:189629777,pr:23.55,ex:"XETRA",tp:"Telecommunications",au:"Authorized",sec:"Telecom",ceo:"Tim Hottges",hq:"Bonn, Germany",yr:1995},
+{t:"BAS",n:"BASF SE",r1:3.6,r2:0.046,p:258638646,pr:45.6,ex:"XETRA",tp:"Industrial",au:"Authorized",sec:"Chemicals",ceo:"Markus Kamieth",hq:"Ludwigshafen, Germany",yr:1865},
+{t:"MBG",n:"Mercedes-Benz Group AG",r1:3.3,r2:0.069,p:244745211,pr:68.4,ex:"XETRA",tp:"Automotive",au:"Authorized",sec:"Automotive",ceo:"Ola Kallenius",hq:"Stuttgart, Germany",yr:1926},
+{t:"BMW",n:"Bayerische Motoren Werke AG",r1:4.5,r2:0.066,p:195352460,pr:94.8,ex:"XETRA",tp:"Automotive",au:"Authorized",sec:"Automotive",ceo:"Oliver Zipse",hq:"Munich, Germany",yr:1916},
+{t:"VOW3",n:"Volkswagen AG",r1:3.8,r2:0.048,p:120637049,pr:108.25,ex:"XETRA",tp:"Automotive",au:"Authorized",sec:"Automotive",ceo:"Oliver Blume",hq:"Wolfsburg, Germany",yr:1937},
+{t:"ADS",n:"adidas AG",r1:3.4,r2:0.033,p:477379125,pr:222.1,ex:"XETRA",tp:"Consumer",au:"Authorized",sec:"Sportswear",ceo:"Bjorn Gulden",hq:"Herzogenaurach, Germany",yr:1949},
+{t:"MUV2",n:"Munich Re",r1:4.1,r2:0.041,p:86205705,pr:445.6,ex:"XETRA",tp:"Insurance",au:"Authorized",sec:"Reinsurance",ceo:"Joachim Wenning",hq:"Munich, Germany",yr:1880},
+// Euronext Paris (CAC)
+{t:"MC",n:"LVMH Moet Hennessy Louis Vuitton SE",r1:3.9,r2:0.039,p:176672543,pr:492.3,ex:"Euronext",tp:"Consumer",au:"Authorized",sec:"Luxury Goods",ceo:"Bernard Arnault",hq:"Paris, France",yr:1987},
+{t:"OR",n:"L'Oreal S.A.",r1:4.1,r2:0.053,p:146969322,pr:392.5,ex:"Euronext",tp:"Consumer",au:"Authorized",sec:"Cosmetics",ceo:"Nicolas Hieronimus",hq:"Clichy, France",yr:1909},
+{t:"TTE",n:"TotalEnergies SE",r1:3.8,r2:0.061,p:203301653,pr:58.72,ex:"Euronext",tp:"Energy",au:"Authorized",sec:"Oil & Gas",ceo:"Patrick Pouyanne",hq:"Courbevoie, France",yr:1924},
+{t:"SAN",n:"Sanofi S.A.",r1:4.3,r2:0.045,p:43646729,pr:98.45,ex:"Euronext",tp:"Pharmaceutical",au:"Authorized",sec:"Pharmaceuticals",ceo:"Paul Hudson",hq:"Paris, France",yr:2004},
+{t:"AI",n:"Air Liquide S.A.",r1:4.5,r2:0.028,p:154062706,pr:175.2,ex:"Euronext",tp:"Industrial",au:"Authorized",sec:"Industrial Gases",ceo:"Francois Jackow",hq:"Paris, France",yr:1902},
+{t:"BNP",n:"BNP Paribas S.A.",r1:4.1,r2:0.066,p:118427371,pr:64.35,ex:"Euronext",tp:"Investment Bank",au:"Authorized",sec:"Banking",ceo:"Jean-Laurent Bonnafe",hq:"Paris, France",yr:2000},
+// HKEX
+{t:"0700",n:"Tencent Holdings Ltd.",r1:4.3,r2:0.022,p:167647514,pr:388.4,ex:"HKEX",tp:"Technology",au:"Authorized",sec:"Internet & Gaming",ceo:"Pony Ma",hq:"Shenzhen, China",yr:1998},
+{t:"9988",n:"Alibaba Group Holding",r1:4.5,r2:0.058,p:1436431086,pr:82.15,ex:"HKEX",tp:"Technology",au:"Authorized",sec:"E-Commerce",ceo:"Eddie Wu",hq:"Hangzhou, China",yr:1999},
+{t:"0941",n:"China Mobile Ltd.",r1:4.4,r2:0.036,p:1785089433,pr:72.8,ex:"HKEX",tp:"Telecommunications",au:"Authorized",sec:"Telecom",ceo:"Dong Xin",hq:"Hong Kong",yr:1997},
+{t:"1299",n:"AIA Group Ltd.",r1:3.8,r2:0.048,p:118282923,pr:62.45,ex:"HKEX",tp:"Insurance",au:"Authorized",sec:"Life Insurance",ceo:"Lee Yuan Siong",hq:"Hong Kong",yr:2010},
+// TSE (Tokyo)
+{t:"7203",n:"Toyota Motor Corporation",r1:4.1,r2:0.035,p:1335670471,pr:2845,ex:"TSE",tp:"Automotive",au:"Authorized",sec:"Automotive",ceo:"Koji Sato",hq:"Toyota City, Japan",yr:1937},
+{t:"6758",n:"Sony Group Corporation",r1:4.3,r2:0.045,p:1066408307,pr:13420,ex:"TSE",tp:"Technology",au:"Authorized",sec:"Electronics & Entertainment",ceo:"Kenichiro Yoshida",hq:"Tokyo, Japan",yr:1946},
+{t:"6861",n:"Keyence Corporation",r1:4.1,r2:0.02,p:1203287121,pr:62500,ex:"TSE",tp:"Technology",au:"Authorized",sec:"Sensors & Automation",ceo:"Takemitsu Takizaki",hq:"Osaka, Japan",yr:1974},
+{t:"8306",n:"Mitsubishi UFJ Financial",r1:3.5,r2:0.041,p:649481474,pr:1625,ex:"TSE",tp:"Investment Bank",au:"Authorized",sec:"Banking",ceo:"Hironori Kamezawa",hq:"Tokyo, Japan",yr:2001},
+// Crypto
+{t:"BTC",n:"Bitcoin",r1:4.9,r2:0.018,p:25884545550,pr:61394.00,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Digital Currency"},
+{t:"ETH",n:"Ethereum",r1:4.7,r2:0.022,p:9469493064,pr:1732.49,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Smart Contracts"},
+{t:"BNB",n:"BNB",r1:4.3,r2:0.030,p:782019254,pr:570.09,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Exchange Token"},
+{t:"XRP",n:"Ripple",r1:4.1,r2:0.035,p:1353624314,pr:1.11,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Payments"},
+{t:"SOL",n:"Solana",r1:4.5,r2:0.028,p:1903480903,pr:79.34,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 1"},
+{t:"DOGE",n:"Dogecoin",r1:3.4,r2:0.072,p:607072888,pr:0.0745,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Meme Coin"},
+{t:"ADA",n:"Cardano",r1:4.2,r2:0.038,p:422324858,pr:0.1789,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 1"},
+{t:"TRX",n:"TRON",r1:3.8,r2:0.045,p:479822259,pr:0.3266,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 1"},
+{t:"LINK",n:"Chainlink",r1:4.4,r2:0.032,p:158468506,pr:7.76,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Oracle"},
+{t:"XLM",n:"Stellar",r1:3.9,r2:0.042,p:611782349,pr:0.1973,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Payments"},
+{t:"XMR",n:"Monero",r1:4.0,r2:0.040,p:104704631,pr:316.72,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Privacy"},
+{t:"ZEC",n:"Zcash",r1:3.7,r2:0.048,p:282152642,pr:442.11,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Privacy"},
+{t:"BCH",n:"Bitcoin Cash",r1:3.6,r2:0.052,p:148865140,pr:234.94,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Digital Currency"},
+{t:"LTC",n:"Litecoin",r1:3.5,r2:0.055,p:286509724,pr:43.87,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Digital Currency"},
+{t:"AVAX",n:"Avalanche",r1:4.3,r2:0.033,p:140372538,pr:6.73,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 1"},
+{t:"NEAR",n:"NEAR Protocol",r1:4.2,r2:0.036,p:180986834,pr:1.96,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 1"},
+{t:"DOT",n:"Polkadot",r1:4.1,r2:0.040,p:156894321,pr:0.85,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 0"},
+{t:"UNI",n:"Uniswap",r1:4.0,r2:0.044,p:132547890,pr:3.09,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"DeFi"},
+{t:"ATOM",n:"Cosmos",r1:3.9,r2:0.046,p:98765432,pr:1.56,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Interoperability"},
+{t:"SUI",n:"Sui",r1:4.4,r2:0.029,p:235154627,pr:0.72,ex:"Crypto",tp:"Crypto",au:"Authorized",sec:"Layer 1"}
+];
+
+
+DATA.forEach(d=>{d.g=rGrade(d.r1)});
+
+const PER_PAGE=25;
+let filtered=[];let currentPage=1;
+let currentSort={key:"num",dir:"asc"};let currentExchange="ALL";
+
+function gradeHTML(g){return`<span class="grade ${rClass(g)}">${g}</span>`}
+function fmtParts(n){if(n>=1e9)return(n/1e9).toFixed(1)+"B";if(n>=1e6)return(n/1e6).toFixed(1)+"M";if(n>=1e3)return(n/1e3).toFixed(1)+"K";return n}
+function fmtPrice(p,ex){
+  if(ex==="TSE")return"¥"+p.toLocaleString("en-GB");
+  if(ex==="HKEX")return"HK$"+p.toLocaleString("en-GB",{minimumFractionDigits:2});
+  if(ex==="LSE")return"£"+p.toLocaleString("en-GB",{minimumFractionDigits:2});
+  if(ex==="XETRA"||ex==="Euronext"||ex==="OMXH")return"€"+p.toLocaleString("en-GB",{minimumFractionDigits:2});
+  if(ex==="Crypto")return p>=1?"$"+p.toLocaleString("en-GB",{minimumFractionDigits:2,maximumFractionDigits:2}):"$"+p.toFixed(4);
+  return"$"+p.toLocaleString("en-GB",{minimumFractionDigits:2})
+}
+function authHTML(a){
+  if(a==="Authorized")return'<span class="auth-ok">Authorized</span>';
+  if(a==="Pending Review")return'<span class="auth-pend">Pending</span>';
+  return'<span class="auth-rev">Revoked</span>';
+}
+
+function applyFilters(){
+  const q=document.getElementById("searchInput").value.toLowerCase();
+  filtered=DATA.filter(d=>{
+    if(currentExchange!=="ALL"&&d.ex!==currentExchange)return false;
+    if(q&&!d.t.toLowerCase().includes(q)&&!d.n.toLowerCase().includes(q)&&!d.ex.toLowerCase().includes(q)&&!d.tp.toLowerCase().includes(q))return false;
+    return true;
+  });
+  sortData();currentPage=1;render();
+}
+
+function sortData(){
+  const k=currentSort.key;const dir=currentSort.dir==="asc"?1:-1;
+  filtered.sort((a,b)=>{
+    let va,vb;
+    if(k==="num"){va=DATA.indexOf(a);vb=DATA.indexOf(b)}
+    else if(k==="ticker"){va=a.t;vb=b.t}
+    else if(k==="name"){va=a.n;vb=b.n}
+    else if(k==="type"){va=a.tp;vb=b.tp}
+    else if(k==="grade"){va=a.g;vb=b.g}
+    else if(k==="rating1"){va=a.r1;vb=b.r1}
+    else if(k==="rating2"){va=a.r2;vb=b.r2}
+    else if(k==="parts"){va=a.p;vb=b.p}
+    else if(k==="price"){va=a.pr;vb=b.pr}
+    else if(k==="exchange"){va=a.ex;vb=b.ex}
+    else if(k==="auth"){va=a.au;vb=b.au}
+    else{va=0;vb=0}
+    if(typeof va==="string")return va.localeCompare(vb)*dir;
+    return(va-vb)*dir;
+  });
+}
+
+function render(){
+  const start=(currentPage-1)*PER_PAGE;
+  const page=filtered.slice(start,start+PER_PAGE);
+  const tbody=document.getElementById("tableBody");
+  tbody.innerHTML=page.map((d,i)=>{
+    const idx=start+i+1;
+    return`<tr onclick="openDetail(${DATA.indexOf(d)})">
+      <td>${idx}</td>
+      <td><span class="ticker">${d.t}</span></td>
+      <td class="corp-name">${d.n}</td>
+      <td><span class="type-tag">${d.tp}</span></td>
+      <td>${gradeHTML(d.g)}</td>
+      <td class="num-col">${d.r1.toFixed(1)}</td>
+      <td class="num-col">${d.r2.toFixed(3)}</td>
+      <td class="num-col">${fmtParts(d.p)}</td>
+      <td class="num-col">${fmtPrice(d.pr,d.ex)}</td>
+      <td><span class="exchange-tag">${d.ex}</span></td>
+      <td>${authHTML(d.au)}</td>
+    </tr>`;
+  }).join("");
+  document.getElementById("resultsCount").textContent=filtered.length+" of "+DATA.length+" listings";
+  updateStats();renderPagination();updateSortHeaders();
+}
+
+function updateStats(){
+  document.getElementById("totalListings").textContent=filtered.length;
+  const avg=filtered.length?filtered.reduce((s,d)=>s+d.r1,0)/filtered.length:0;
+  document.getElementById("avgRating").textContent=avg.toFixed(2);
+  document.getElementById("totalVolume").textContent=fmtParts(filtered.reduce((s,d)=>s+d.p,0));
+  document.getElementById("totalExchanges").textContent=new Set(filtered.map(d=>d.ex)).size;
+  document.getElementById("totalAuth").textContent=filtered.filter(d=>d.au==="Authorized").length;
+}
+
+function renderPagination(){
+  const total=Math.ceil(filtered.length/PER_PAGE);
+  const pg=document.getElementById("pagination");
+  if(total<=1){pg.innerHTML="";return}
+  let html=`<button ${currentPage===1?"disabled":""} onclick="goPage(${currentPage-1})">&laquo;</button>`;
+  for(let i=1;i<=total;i++)html+=`<button class="${i===currentPage?"active":""}" onclick="goPage(${i})">${i}</button>`;
+  html+=`<button ${currentPage===total?"disabled":""} onclick="goPage(${currentPage+1})">&raquo;</button>`;
+  pg.innerHTML=html;
+}
+function goPage(p){currentPage=p;render()}
+
+function updateSortHeaders(){
+  document.querySelectorAll("thead th").forEach(th=>{
+    th.classList.remove("sorted-asc","sorted-desc");
+    if(th.dataset.sort===currentSort.key)th.classList.add(currentSort.dir==="asc"?"sorted-asc":"sorted-desc");
+  });
+}
+
+document.querySelectorAll("thead th[data-sort]").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k=th.dataset.sort;
+    if(currentSort.key===k)currentSort.dir=currentSort.dir==="asc"?"desc":"asc";
+    else currentSort={key:k,dir:"asc"};
+    sortData();render();
+  });
+});
+
+document.querySelectorAll(".filter-btn[data-exchange]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentExchange=btn.dataset.exchange;
+    applyFilters();
+  });
+});
+
+document.getElementById("searchInput").addEventListener("input",applyFilters);
+document.getElementById("sortSelect").addEventListener("change",e=>{
+  const[k,d]=e.target.value.split("-");
+  currentSort={key:k,dir:d};sortData();render();
+});
+
+function openDetail(idx){
+  const d=DATA[idx];
+  document.getElementById("modalTitle").innerHTML=`<span class="ticker" style="margin-right:8px">${d.t}</span> ${d.n}`;
+  const pct=d.r1/5*100;
+  const gc=rClass(d.g);
+  document.getElementById("modalBody").innerHTML=`
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="label">Score Grade</div>
+        <div class="value">${gradeHTML(d.g)} <span style="margin-left:8px;font-size:14px;color:var(--muted)">${d.g==="A"?"Excellent":d.g==="B"?"Good":d.g==="C"?"Fair":"Below Average"}</span></div>
+        <div class="detail-bar"><div class="detail-bar-fill ${gc}" style="width:${pct}%;background:${d.g==="A"?"#22c55e":d.g==="B"?"#3b82f6":d.g==="C"?"#eab308":"#ef4444"}"></div></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Authorization Status</div>
+        <div class="value">${authHTML(d.au)}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Math Score</div>
+        <div class="value">${d.r1.toFixed(1)}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">S&amp;P Rating</div>
+        <div class="value">${d.r2.toFixed(3)}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Price</div>
+        <div class="value">${fmtPrice(d.pr,d.ex)}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Parts Outstanding</div>
+        <div class="value">${d.p.toLocaleString("en-GB")}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Exchange</div>
+        <div class="value"><span class="exchange-tag" style="font-size:13px;padding:4px 12px">${d.ex}</span></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Entity Type</div>
+        <div class="value">${d.tp}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Sector</div>
+        <div class="value">${d.sec}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">CEO</div>
+        <div class="value">${d.ceo}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Headquarters</div>
+        <div class="value">${d.hq}</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Founded</div>
+        <div class="value">${d.yr}</div>
+      </div>
+    </div>
+    <div class="detail-desc">
+      ${d.n} (${d.t}) is a${d.tp==="Insurance"||d.tp==="Industrial"||d.tp==="Investment Bank"?"n":""} ${d.tp.toLowerCase()} entity listed on the ${d.ex} exchange. Currently scored <strong>${d.g}</strong> with a math score of ${d.r1.toFixed(1)} and S&amp;P value of ${d.r2.toFixed(3)}. The entity operates in the ${d.sec.toLowerCase()} sector and is headquartered in ${d.hq}. Authorization status: <strong>${d.au}</strong>.
+    </div>
+  `;
+  document.getElementById("modal").classList.add("open");
+}
+
+function closeModal(){document.getElementById("modal").classList.remove("open")}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+
+function showView(v){
+  document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
+  event.target.classList.add("active");
+}
+
+function updateClock(){
+  document.getElementById("clock").textContent=new Date().toLocaleString("en-GB",{
+    weekday:"short",day:"2-digit",month:"short",year:"numeric",
+    hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false
+  });
+}
+setInterval(updateClock,1000);updateClock();
+
+filtered=[...DATA];render();
+
+const AI50=[
+{r:1,n:"NVIDIA",cat:"Semiconductors",desc:"GPU computing platform powering AI training and inference at scale. Dominant in data center AI accelerators.",sc:98,hq:"Santa Clara, CA",val:"$3.2T"},
+{r:2,n:"OpenAI",cat:"Foundation Models",desc:"Creator of GPT series and ChatGPT. Pioneering large language models and multimodal AI systems.",sc:96,hq:"San Francisco, CA",val:"$150B"},
+{r:3,n:"Microsoft",cat:"Cloud & Enterprise AI",desc:"Azure AI platform, Copilot integration across Office suite, and strategic AI partnerships.",sc:95,hq:"Redmond, WA",val:"$3.1T"},
+{r:4,n:"Google DeepMind",cat:"Research & Cloud",desc:"Gemini models, AlphaFold protein prediction, and Google Cloud AI infrastructure.",sc:94,hq:"London, UK",val:"$2.0T"},
+{r:5,n:"Anthropic",cat:"Foundation Models",desc:"Claude AI assistant and Constitutional AI research. Focus on AI safety and reliability.",sc:93,hq:"San Francisco, CA",val:"$60B"},
+{r:6,n:"Meta AI",cat:"Open Source AI",desc:"LLaMA open-source models, AI-powered social platforms, and metaverse research.",sc:91,hq:"Menlo Park, CA",val:"$1.4T"},
+{r:7,n:"Tesla",cat:"Autonomous Systems",desc:"Full Self-Driving neural networks, Optimus humanoid robot, and Dojo training supercomputer.",sc:90,hq:"Austin, TX",val:"$800B"},
+{r:8,n:"AMD",cat:"Semiconductors",desc:"MI300X AI accelerators challenging NVIDIA. Growing data center AI chip market share.",sc:88,hq:"Santa Clara, CA",val:"$220B"},
+{r:9,n:"Amazon AWS",cat:"Cloud & Enterprise AI",desc:"Bedrock AI platform, custom Trainium chips, and Alexa AI ecosystem.",sc:87,hq:"Seattle, WA",val:"$2.0T"},
+{r:10,n:"Apple",cat:"On-Device AI",desc:"Apple Intelligence, Neural Engine, and privacy-focused on-device machine learning.",sc:86,hq:"Cupertino, CA",val:"$3.4T"},
+{r:11,n:"Broadcom",cat:"Semiconductors",desc:"Custom AI accelerator chips (TPU) for hyperscalers. Networking silicon for AI clusters.",sc:85,hq:"Palo Alto, CA",val:"$820B"},
+{r:12,n:"xAI",cat:"Foundation Models",desc:"Grok AI models integrated with X platform. Real-time knowledge and reasoning focus.",sc:84,hq:"Austin, TX",val:"$50B"},
+{r:13,n:"Samsung",cat:"Semiconductors",desc:"HBM memory for AI chips, on-device AI for Galaxy phones, and foundry services.",sc:83,hq:"Seoul, South Korea",val:"$380B"},
+{r:14,n:"Mistral AI",cat:"Foundation Models",desc:"European open-weight AI models. Efficient architectures for enterprise deployment.",sc:82,hq:"Paris, France",val:"$6B"},
+{r:15,n:"Databricks",cat:"Data & MLOps",desc:"Lakehouse AI platform, Mosaic ML acquisition, and enterprise AI infrastructure.",sc:81,hq:"San Francisco, CA",val:"$62B"},
+{r:16,n:"Palantir",cat:"Enterprise AI",desc:"AIP platform for defense and enterprise AI deployment. Ontology-based AI applications.",sc:80,hq:"Denver, CO",val:"$150B"},
+{r:17,n:"TSMC",cat:"Semiconductors",desc:"Manufacturing all leading AI chips. Advanced 3nm and 2nm process for AI accelerators.",sc:79,hq:"Hsinchu, Taiwan",val:"$900B"},
+{r:18,n:"Snowflake",cat:"Data & MLOps",desc:"Cortex AI platform for enterprise data analytics and LLM-powered data applications.",sc:78,hq:"Bozeman, MT",val:"$55B"},
+{r:19,n:"Hugging Face",cat:"Open Source AI",desc:"Leading open-source AI model hub. Transformers library powering research and production.",sc:77,hq:"New York, NY",val:"$4.5B"},
+{r:20,n:"Scale AI",cat:"Data & MLOps",desc:"AI training data platform. Data labeling and RLHF services for frontier model developers.",sc:76,hq:"San Francisco, CA",val:"$14B"},
+{r:21,n:"Cohere",cat:"Foundation Models",desc:"Enterprise-focused LLMs with RAG capabilities. Multilingual AI for business.",sc:75,hq:"Toronto, Canada",val:"$5.5B"},
+{r:22,n:"Intel",cat:"Semiconductors",desc:"Gaudi AI accelerators and Xeon processors with AI acceleration. Foundry ambitions.",sc:74,hq:"Santa Clara, CA",val:"$110B"},
+{r:23,n:"ServiceNow",cat:"Enterprise AI",desc:"Now Assist AI copilot for IT, HR, and customer service workflows.",sc:73,hq:"Santa Clara, CA",val:"$190B"},
+{r:24,n:"Salesforce",cat:"Enterprise AI",desc:"Einstein AI platform, Agentforce autonomous AI agents for CRM and business processes.",sc:72,hq:"San Francisco, CA",val:"$270B"},
+{r:25,n:"Cerebras Systems",cat:"Semiconductors",desc:"Wafer-scale AI chips. CS-3 with 4 trillion transistors for LLM training and inference.",sc:71,hq:"Sunnyvale, CA",val:"$4B"},
+{r:26,n:"Stability AI",cat:"Generative AI",desc:"Stable Diffusion image generation. Open-source approach to generative AI models.",sc:70,hq:"London, UK",val:"$1B"},
+{r:27,n:"Perplexity",cat:"AI Search",desc:"AI-native search engine with real-time answers and citations. Answer engine paradigm.",sc:69,hq:"San Francisco, CA",val:"$9B"},
+{r:28,n:"Groq",cat:"Semiconductors",desc:"LPU inference chips delivering ultra-fast AI response times. Purpose-built for LLMs.",sc:68,hq:"Mountain View, CA",val:"$2.8B"},
+{r:29,n:"Baidu",cat:"Foundation Models",desc:"ERNIE LLM and autonomous driving. Leading Chinese AI research and applications.",sc:67,hq:"Beijing, China",val:"$40B"},
+{r:30,n:"ByteDance",cat:"AI Applications",desc:"TikTok recommendation AI, Doubao LLM, and AI-powered content creation tools.",sc:66,hq:"Beijing, China",val:"$220B"},
+{r:31,n:"SAP",cat:"Enterprise AI",desc:"Joule AI copilot across ERP suite. Business AI for enterprise resource planning.",sc:65,hq:"Walldorf, Germany",val:"$280B"},
+{r:32,n:"Runway",cat:"Generative AI",desc:"AI video generation and editing. Gen-3 model for cinematic AI content creation.",sc:64,hq:"New York, NY",val:"$4B"},
+{r:33,n:"Alibaba Cloud",cat:"Cloud & Enterprise AI",desc:"Qwen LLM series and cloud AI infrastructure. Leading Asian cloud AI provider.",sc:63,hq:"Hangzhou, China",val:"$35B"},
+{r:34,n:"AI2ORBIT Co.",cat:"Network Intelligence",desc:"NetSwitch benchmark platform, thermal-aware network optimization, and financial ratings systems.",sc:62,hq:"Helsinki, Finland",val:"Private"},
+{r:35,n:"Anduril",cat:"Defense AI",desc:"Lattice AI platform for defense. Autonomous drones and AI-powered military systems.",sc:61,hq:"Costa Mesa, CA",val:"$14B"},
+{r:36,n:"UiPath",cat:"AI Automation",desc:"Robotic process automation with AI. Intelligent document processing and workflow AI.",sc:60,hq:"New York, NY",val:"$12B"},
+{r:37,n:"CrowdStrike",cat:"Cybersecurity AI",desc:"Charlotte AI for cybersecurity threat detection. AI-native endpoint protection.",sc:59,hq:"Austin, TX",val:"$85B"},
+{r:38,n:"Palo Alto Networks",cat:"Cybersecurity AI",desc:"Cortex AI for SOC automation. Precision AI across network and cloud security.",sc:58,hq:"Santa Clara, CA",val:"$120B"},
+{r:39,n:"Arm Holdings",cat:"Semiconductors",desc:"AI-optimized CPU architectures powering mobile and edge AI. Compute platform for AI.",sc:57,hq:"Cambridge, UK",val:"$150B"},
+{r:40,n:"C3.ai",cat:"Enterprise AI",desc:"Enterprise AI platform for predictive maintenance, fraud detection, and supply chain.",sc:56,hq:"Redwood City, CA",val:"$4B"},
+{r:41,n:"Tempus AI",cat:"Healthcare AI",desc:"AI-driven precision medicine. Clinical and molecular data analysis for oncology.",sc:55,hq:"Chicago, IL",val:"$6B"},
+{r:42,n:"Recursion",cat:"Healthcare AI",desc:"AI-powered drug discovery. Biological data maps for therapeutic development.",sc:54,hq:"Salt Lake City, UT",val:"$3B"},
+{r:43,n:"SoundHound AI",cat:"Voice AI",desc:"Conversational AI for automotive, restaurants, and IoT. Voice-first AI platform.",sc:53,hq:"Santa Clara, CA",val:"$5B"},
+{r:44,n:"Roblox",cat:"AI Applications",desc:"Generative AI for 3D world creation. AI-powered content tools for user-generated games.",sc:52,hq:"San Mateo, CA",val:"$35B"},
+{r:45,n:"Mobileye",cat:"Autonomous Systems",desc:"EyeQ AI chips for autonomous driving. ADAS technology powering 50+ automakers.",sc:51,hq:"Jerusalem, Israel",val:"$15B"},
+{r:46,n:"Nuro",cat:"Autonomous Systems",desc:"Autonomous delivery vehicles. AI-powered last-mile delivery robots.",sc:50,hq:"Mountain View, CA",val:"$4B"},
+{r:47,n:"Shield AI",cat:"Defense AI",desc:"Hivemind AI pilot for autonomous aircraft. AI for military aviation operations.",sc:49,hq:"San Diego, CA",val:"$5B"},
+{r:48,n:"Cradle",cat:"Healthcare AI",desc:"AI protein engineering platform. Generative AI for biological design.",sc:48,hq:"Zurich, Switzerland",val:"$1B"},
+{r:49,n:"Aleph Alpha",cat:"Foundation Models",desc:"European sovereign AI. Luminous models for government and enterprise with data sovereignty.",sc:47,hq:"Heidelberg, Germany",val:"$2B"},
+{r:50,n:"AI21 Labs",cat:"Foundation Models",desc:"Jamba models and enterprise AI. Hybrid SSM-transformer architecture innovation.",sc:46,hq:"Tel Aviv, Israel",val:"$4B"}
+];
+
+let selectedAI50=null;
+function renderAI50List(){
+  const list=document.getElementById("ai50List");
+  if(!list)return;
+  list.innerHTML=AI50.map(c=>`
+    <div class="ai50-item${selectedAI50===c.r?' active':''}" onclick="selectAI50(${c.r})">
+      <div class="ai50-rank">${c.r}</div>
+      <div class="ai50-item-info">
+        <div class="ai50-name">${c.n}</div>
+        <div class="ai50-item-sub">
+          <span class="ai50-score">${c.sc}</span>
+          <span class="ai50-cat">${c.cat}</span>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+function selectAI50(rank){
+  selectedAI50=rank;
+  const c=AI50.find(x=>x.r===rank);
+  if(!c)return;
+  const peers=AI50.filter(x=>x.cat===c.cat&&x.r!==c.r).slice(0,4);
+  const det=document.getElementById("ai50Detail");
+  det.innerHTML=`
+    <div class="ai50-detail-head">
+      <div class="rank-badge">#${c.r}</div>
+      <h3>${c.n}</h3>
+      <div class="cat-line">${c.cat} &bull; ${c.hq}</div>
+    </div>
+    <div class="ai50-detail-body">
+      <div class="ai50-detail-desc">${c.desc}</div>
+      <div class="ai50-score-bar">
+        <div class="bar-label"><span>AI Score</span><span>${c.sc}/100</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${c.sc}%"></div></div>
+      </div>
+      <div class="ai50-stats">
+        <div class="ai50-stat">
+          <div class="label">Valuation</div>
+          <div class="value">${c.val}</div>
+        </div>
+        <div class="ai50-stat">
+          <div class="label">Headquarters</div>
+          <div class="value" style="font-size:14px">${c.hq}</div>
+        </div>
+        <div class="ai50-stat">
+          <div class="label">Category</div>
+          <div class="value" style="font-size:14px">${c.cat}</div>
+        </div>
+        <div class="ai50-stat">
+          <div class="label">Global Rank</div>
+          <div class="value">#${c.r} of 50</div>
+        </div>
+      </div>
+      ${peers.length?`<div class="ai50-peers">
+        <h4>Same Category</h4>
+        ${peers.map(p=>`<div class="ai50-peer">
+          <span class="peer-rank">#${p.r}</span>
+          <span class="peer-name">${p.n}</span>
+          <span class="peer-score">${p.sc}/100</span>
+        </div>`).join("")}
+      </div>`:""}
+    </div>
+  `;
+  document.querySelectorAll(".ai50-item").forEach(el=>el.classList.remove("active"));
+  document.querySelector(`.ai50-item:nth-child(${rank})`).classList.add("active");
+}
+renderAI50List();
+selectAI50(1);
+</script>
+</body>
+</html>
